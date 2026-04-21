@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Native Garden Plant Tracker</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <div class="container">
+      <header class="topbar">
+        <div>
+          <h1>Native Garden Plant Tracker</h1>
+          <p>Track plants, bloom windows, spread, labels, photos, and bed layout around your house.</p>
+        </div>
+        <div class="toolbar no-print">
+          <button id="exportBtn" class="button">Export JSON</button>
+          <label class="button secondary">
+            Import JSON
+            <input id="importInput" type="file" accept="application/json" hidden />
+          </label>
+          <button id="printBtn" class="button secondary">Print</button>
+        </div>
+      </header>
+
+      <section class="stats">
+        <article class="stat-card"><div class="stat-label">Total Individual Plants</div><div id="statPlants" class="stat-value">0</div></article>
+        <article class="stat-card"><div class="stat-label">Beds Tracked</div><div id="statBeds" class="stat-value">0</div></article>
+        <article class="stat-card"><div class="stat-label">Native Entries</div><div id="statNative" class="stat-value">0</div></article>
+      </section>
+
+      <nav class="tabs no-print">
+        <button class="tab active" data-tab="plants">Plants</button>
+        <button class="tab" data-tab="beds">Beds</button>
+        <button class="tab" data-tab="bloom">Bloom</button>
+        <button class="tab" data-tab="labels">Labels</button>
+        <button class="tab" data-tab="map">Map</button>
+        <button class="tab" data-tab="add">Add Plant</button>
+      </nav>
+
+      <main>
+        <section id="tab-plants" class="tab-panel active">
+          <div class="filters no-print">
+            <input id="searchInput" class="input" placeholder="Search by name, scientific name, note, bloom month, or bed" />
+            <select id="bedFilter" class="input"></select>
+            <label class="checkbox-row"><input id="nativeOnly" type="checkbox" /> Native only</label>
+          </div>
+          <div id="plantsGrid" class="cards-grid"></div>
+        </section>
+
+        <section id="tab-beds" class="tab-panel">
+          <div id="bedsStack" class="stack"></div>
+        </section>
+
+        <section id="tab-bloom" class="tab-panel">
+          <div id="bloomStack" class="stack"></div>
+        </section>
+
+        <section id="tab-labels" class="tab-panel">
+          <article class="card">
+            <h2>Printable Labels</h2>
+            <div id="labelsBlock" class="label-block"></div>
+          </article>
+        </section>
+
+        <section id="tab-map" class="tab-panel">
+          <div class="two-col">
+            <article class="card">
+              <h2>Simple Bed Map</h2>
+              <div class="map-block">
+                <div class="map-house">[ HOUSE ]</div>
+                <div class="map-bed">
+                  <strong>Front Left Woodland</strong><br>
+                  Coral Honeysuckle, Southern Bush Honeysuckle, Celandine Poppy, Fameflower, Black-Eyed Susan, Columbine, Woodland Phlox
+                </div>
+                <div class="map-divider">Walkway</div>
+                <div class="map-bed">
+                  <strong>Front Right Meadow</strong><br>
+                  Western Sunflower, Largeflower Aster, Snow Flurry Aster, Fireworks Sundrops, Kobold Blazing Star, Rattlesnake Master, Wild Bergamot, Garden Phlox
+                </div>
+                <div class="map-grid">
+                  <div class="map-bed"><strong>Garage Right</strong><br>Black-Eyed Susan</div>
+                  <div class="map-bed"><strong>Garage Left Rectangle</strong><br>Gray Goldenrod, Butterfly Weed</div>
+                  <div class="map-bed"><strong>Garage Left Peninsula</strong><br>Beardtongue, Rough Blazing Star, Aromatic Aster, Summer Phlox</div>
+                  <div class="map-bed"><strong>Back Porch Right</strong><br>Peonies, Jacob Cline Bee Balm, Mountain Mint, Wild Bergamot, Obedient Plant, Coral Honeysuckle</div>
+                  <div class="map-bed span-2"><strong>Back Porch Left</strong><br>Jacob Cline Bee Balm, Blue Lobelia</div>
+                </div>
+              </div>
+            </article>
+            <article class="card">
+              <h2>Bed Notes</h2>
+              <div id="bedNotes"></div>
+            </article>
+          </div>
+        </section>
+
+        <section id="tab-add" class="tab-panel">
+          <article class="card">
+            <h2>Add a Plant Entry</h2>
+            <form id="addForm" class="form-grid">
+              <label>Common Name<input name="commonName" class="input" required /></label>
+              <label>Scientific Name<input name="scientificName" class="input" required /></label>
+              <label>Quantity<input name="quantity" type="number" min="1" value="1" class="input" /></label>
+              <label>Bed<select name="bed" id="formBed" class="input"></select></label>
+              <label>Sun<input name="sun" class="input" placeholder="Full Sun, Part Shade" /></label>
+              <label>Moisture<input name="moisture" class="input" placeholder="Dry, Medium, Moist" /></label>
+              <label>Bloom Start<input name="bloomStart" class="input" placeholder="May" /></label>
+              <label>Bloom End<input name="bloomEnd" class="input" placeholder="July" /></label>
+              <label>Spread Habit<input name="spread" class="input" placeholder="Clump, rhizomes, reseeding" /></label>
+              <label>Aggression (1–5)<input name="aggression" type="number" min="1" max="5" value="1" class="input" /></label>
+              <label class="full">Notes<textarea name="notes" class="input textarea"></textarea></label>
+              <label class="full">Photo<input id="photoInput" type="file" accept="image/*" class="input" /></label>
+              <div class="full"><img id="photoPreview" class="preview-photo" hidden alt="Preview" /></div>
+              <label class="checkbox-row full"><input name="native" type="checkbox" checked /> Native plant</label>
+              <label class="checkbox-row full"><input name="printLabel" type="checkbox" checked /> Include in printable labels</label>
+              <div class="full"><button class="button" type="submit">Save Plant Entry</button></div>
+            </form>
+          </article>
+        </section>
+      </main>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
