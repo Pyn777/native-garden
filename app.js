@@ -1,59 +1,59 @@
 const gardenData = {
   "Front Right": [
-    "Wild bergamot",
-    "Largeflower aster (2)",
-    "Rattlesnake master",
-    "Western sunflower (2)",
-    "Kobold blazing star (5)",
-    "Snow Flurry aster (3)",
-    "Fireworks sundrops (3)",
-    "Garden phlox",
-    "Lanceleaf coreopsis",
-    "Threadleaf coreopsis",
-    "Blue Moon phlox"
-  ],
-
-  "Front Left": [
-    "Southern bush honeysuckle (2)",
-    "Prairie golden aster",
-    "Wild columbine",
-    "Fameflower",
-    "Celandine poppy",
-    "Native white petunia",
-    "Coral honeysuckle (2)",
-    "Tennessee coneflower",
-    "Black-eyed Susan (2)",
-    "Anise hyssop"
-  ],
-
-  "Garage Left": [
-    "Aromatic aster",
-    "Summer phlox",
-    "Rough blazing star (2)",
-    "Beardtongue (3)",
-    "Gray goldenrod",
-    "Butterfly weed (8 tubers)"
-  ],
-
-  "Garage Right": [
-    "Black-eyed Susan (2)",
-    "Butterfly weed (2 tubers)"
+    { name: "Wild bergamot", bloom: "Jun–Aug" },
+    { name: "Largeflower aster (2)", bloom: "Sep–Oct" },
+    { name: "Rattlesnake master", bloom: "Jun–Aug" },
+    { name: "Western sunflower (2)", bloom: "Jul–Sep" },
+    { name: "Kobold blazing star (5)", bloom: "Jul–Aug" },
+    { name: "Snow Flurry aster (3)", bloom: "Sep–Oct" },
+    { name: "Fireworks sundrops (3)", bloom: "May–Sep" },
+    { name: "Garden phlox", bloom: "Jun–Aug" },
+    { name: "Lanceleaf coreopsis", bloom: "May–Jul" },
+    { name: "Threadleaf coreopsis", bloom: "Jun–Aug" },
+    { name: "Blue Moon phlox", bloom: "Mar–May" }
   ],
 
   "Back Porch Right": [
-    "Peonies (2)",
-    "Jacob Cline bee balm (3)",
-    "Wild bergamot",
-    "Spotted bee balm",
-    "Mountain mint",
-    "Obedient plant",
-    "Coral honeysuckle",
-    "Purple passionflower"
-  ],
+    { name: "Peonies (2)", bloom: "Apr–May" },
+    { name: "Jacob Cline bee balm (3)", bloom: "Jun–Aug" },
+    { name: "Wild bergamot", bloom: "Jun–Aug" },
+    { name: "Spotted bee balm", bloom: "Jul–Sep" },
+    { name: "Mountain mint", bloom: "Jul–Sep" },
+    { name: "Obedient plant", bloom: "Jul–Sep" },
+    { name: "Coral honeysuckle", bloom: "Apr–Jun" },
+   ],
 
   "Back Porch Left": [
-    "Jacob Cline bee balm (2)",
-    "Blue lobelia"
+    { name: "Jacob Cline bee balm (2)", bloom: "Jun–Aug" },
+    { name: "Blue lobelia", bloom: "Jul–Sep" }
+   { name: "Purple passionflower", bloom: "Jun–Aug" }
+  ],
+
+  "Garage Left": [
+    { name: "Aromatic aster", bloom: "Sep–Oct" },
+    { name: "Summer phlox", bloom: "Jun–Aug" },
+    { name: "Rough blazing star (2)", bloom: "Jul–Sep" },
+    { name: "Beardtongue (3)", bloom: "May–Jun" },
+    { name: "Gray goldenrod", bloom: "Aug–Oct" },
+    { name: "Butterfly weed (8 tubers)", bloom: "Jun–Aug" }
+  ],
+
+  "Garage Right": [
+    { name: "Black-eyed Susan (2)", bloom: "Jun–Sep" },
+    { name: "Butterfly weed (2 tubers)", bloom: "Jun–Aug" }
+  ],
+
+  "Front Left": [
+    { name: "Southern bush honeysuckle (2)", bloom: "Jun–Jul" },
+    { name: "Prairie golden aster", bloom: "Aug–Oct" },
+    { name: "Wild columbine", bloom: "Apr–May" },
+    { name: "Fameflower", bloom: "Jun–Sep" },
+    { name: "Celandine poppy", bloom: "Mar–May" },
+    { name: "Native white petunia", bloom: "Jun–Sep" },
+    { name: "Coral honeysuckle (2)", bloom: "Apr–Jun" },
+    { name: "Tennessee coneflower", bloom: "Jun–Aug" },
+    { name: "Black-eyed Susan (2)", bloom: "Jun–Sep" },
+    { name: "Anise hyssop", bloom: "Jun–Sep" }
   ]
 };
 
