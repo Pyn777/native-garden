@@ -1,126 +1,404 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Native Garden Plant Tracker</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>Jason's Native Garden Planner</title>
+  <style>
+    :root {
+      --bg: #f6f7f2;
+      --card: #ffffff;
+      --text: #1f2a1f;
+      --muted: #66705f;
+      --accent: #4f7f45;
+      --accent-dark: #31552b;
+      --border: #d7ddcf;
+      --warn: #fff3cd;
+      --danger: #f8d7da;
+      --soft: #e8f3e4;
+      --blue: #e7f0ff;
+      --gold: #fff1c7;
+      --rose: #ffe5e5;
+      --purple: #f0e8ff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.45;
+    }
+
+    header {
+      padding: 1.25rem;
+      background: linear-gradient(135deg, #274b24, #5f8f4e);
+      color: white;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: clamp(1.7rem, 5vw, 2.6rem);
+      letter-spacing: -0.03em;
+    }
+
+    header p { margin: 0.35rem 0 0; opacity: 0.92; max-width: 900px; }
+
+    main { max-width: 1200px; margin: 0 auto; padding: 1rem; }
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .stat, .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      box-shadow: 0 8px 20px rgba(31,42,31,0.06);
+    }
+
+    .stat { padding: 1rem; border-radius: 18px; }
+    .stat .number { font-size: 1.8rem; font-weight: 800; color: var(--accent-dark); }
+    .stat .label { color: var(--muted); font-size: 0.9rem; }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.3fr);
+      gap: 1rem;
+      align-items: start;
+    }
+
+    .card { padding: 1rem; }
+    .card h2, .card h3 { margin-top: 0; }
+
+    .map-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      min-height: 360px;
+      border-radius: 22px;
+      overflow: hidden;
+      background: #cad8bc;
+      border: 1px solid var(--border);
+    }
+
+    .house {
+      position: absolute;
+      left: 32%;
+      top: 40%;
+      width: 36%;
+      height: 28%;
+      background: #555;
+      transform: rotate(18deg);
+      border-radius: 10px;
+      box-shadow: inset 0 0 0 4px rgba(255,255,255,.35), 0 12px 35px rgba(0,0,0,.25);
+    }
+
+    .driveway {
+      position: absolute;
+      left: -5%;
+      top: 58%;
+      width: 42%;
+      height: 16%;
+      background: #dad6cc;
+      transform: rotate(-18deg);
+      border-radius: 999px;
+      opacity: .95;
+    }
+
+    .road {
+      position: absolute;
+      right: -20%;
+      bottom: 5%;
+      width: 70%;
+      height: 10%;
+      background: #b9b9b9;
+      transform: rotate(-18deg);
+      opacity: .65;
+      border-radius: 999px;
+    }
+
+    .zone {
+      position: absolute;
+      border: 2px solid rgba(35, 72, 32, 0.65);
+      border-radius: 18px;
+      padding: 0.45rem;
+      text-align: center;
+      font-weight: 800;
+      cursor: pointer;
+      background: rgba(255,255,255,.76);
+      backdrop-filter: blur(2px);
+      transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+      user-select: none;
+    }
+
+    .zone:hover, .zone.active {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(0,0,0,.18);
+      background: #ffffff;
+    }
+
+    .zone small {
+      display: block;
+      font-weight: 600;
+      color: #41503b;
+      font-size: .72rem;
+    }
+
+    .front-right { right: 5%; bottom: 14%; width: 28%; height: 18%; background: var(--blue); }
+    .front-left { left: 7%; bottom: 15%; width: 28%; height: 18%; background: var(--gold); }
+    .garage-left { left: 11%; top: 45%; width: 22%; height: 16%; background: var(--rose); }
+    .garage-right { left: 28%; top: 59%; width: 16%; height: 12%; background: var(--purple); }
+    .back-porch-left { left: 17%; top: 25%; width: 28%; height: 16%; background: var(--soft); }
+    .back-porch-right { right: 18%; top: 22%; width: 30%; height: 18%; background: #d9f2dc; }
+    .unplanted { right: 5%; top: 5%; width: 26%; height: 11%; background: #f5f5f5; }
+
+    .map-caption { color: var(--muted); margin: .75rem 0 0; font-size: .9rem; }
+
+    .controls {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(160px, .5fr);
+      gap: .75rem;
+      margin-bottom: .75rem;
+    }
+
+    input, select, button { font: inherit; }
+
+    input, select {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: .75rem .85rem;
+      background: #fff;
+      color: var(--text);
+    }
+
+    button {
+      border: 0;
+      background: var(--accent);
+      color: white;
+      border-radius: 14px;
+      padding: .75rem .9rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button.secondary {
+      background: #e8eee4;
+      color: var(--accent-dark);
+      border: 1px solid var(--border);
+    }
+
+    .bed-title {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: .5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: .7rem;
+      margin-bottom: .8rem;
+    }
+
+    .bed-title h2 { margin: 0; }
+    .bed-note { color: var(--muted); margin: 0 0 .8rem; }
+
+    .plant-list { display: grid; gap: .75rem; }
+
+    .plant-card {
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: .85rem;
+      background: #fff;
+    }
+
+    .plant-card h3 { margin: 0; font-size: 1.05rem; }
+    .sci { font-style: italic; color: var(--muted); margin: .15rem 0 .45rem; }
+
+    .meta { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .45rem; }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      background: #eef4ea;
+      border: 1px solid #dbe6d4;
+      padding: .22rem .55rem;
+      font-size: .82rem;
+      color: #31472d;
+    }
+
+    .pill.warn { background: var(--warn); border-color: #e2c66d; }
+    .pill.danger { background: var(--danger); border-color: #de9aa2; }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: 120px repeat(10, minmax(34px, 1fr));
+      gap: .25rem;
+      align-items: center;
+      font-size: .78rem;
+      overflow-x: auto;
+      padding-bottom: .25rem;
+    }
+
+    .timeline .month, .timeline .plant-name {
+      font-weight: 700;
+      color: var(--muted);
+      padding: .35rem;
+    }
+
+    .bar-cell {
+      height: 22px;
+      border-radius: 999px;
+      background: #edf1e8;
+      border: 1px solid #dce4d7;
+    }
+
+    .bar-cell.on { background: #7fb56f; border-color: #5c9a4b; }
+
+    .section-grid { display: grid; gap: 1rem; margin-top: 1rem; }
+    .warnings { display: grid; gap: .55rem; }
+
+    .warning {
+      border-left: 5px solid #d89a1d;
+      background: #fff8e7;
+      border-radius: 12px;
+      padding: .7rem .8rem;
+    }
+
+    .label-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .5rem;
+    }
+
+    .label-card {
+      border: 1px dashed #7b856f;
+      border-radius: 12px;
+      padding: .7rem;
+      min-height: 90px;
+      background: #fff;
+    }
+
+    .label-card strong { display: block; }
+    .label-card em { display: block; color: var(--muted); font-size: .86rem; margin-top: .15rem; }
+
+
+    .zone {
+      transform: rotate(18deg);
+      transform-origin: center;
+      cursor: grab;
+      touch-action: none;
+      font-size: .82rem;
+    }
+
+    .zone:hover, .zone.active {
+      transform: rotate(18deg) translateY(-2px);
+    }
+
+    .zone.dragging {
+      cursor: grabbing;
+      opacity: .9;
+      z-index: 20;
+    }
+
+    .zone small {
+      font-size: .62rem;
+      line-height: 1.05;
+    }
+
+    .front-right { right: 8%; bottom: 17%; width: 21%; height: 13%; }
+    .front-left { left: 9%; bottom: 18%; width: 21%; height: 13%; }
+    .garage-left { left: 13%; top: 47%; width: 17%; height: 11%; }
+    .garage-right { left: 31%; top: 60%; width: 13%; height: 9%; }
+    .back-porch-left { left: 20%; top: 27%; width: 21%; height: 11%; }
+    .back-porch-right { right: 21%; top: 24%; width: 22%; height: 12%; }
+    .unplanted { right: 7%; top: 7%; width: 20%; height: 8%; }
+
+    @media (max-width: 850px) {
+      .dashboard { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .layout { grid-template-columns: 1fr; }
+      .map-wrap { min-height: 330px; }
+      .controls { grid-template-columns: 1fr; }
+    }
+
+    @media print {
+      header, .map-card, .controls, .print-hide, button { display: none !important; }
+      body { background: white; }
+      main { max-width: none; padding: 0; }
+      .layout { display: block; }
+      .card { box-shadow: none; border: none; }
+      .plant-card, .label-card { break-inside: avoid; }
+    }
+  </style>
 </head>
 <body>
-  <div class="page-shell">
-    <div class="container">
-      <header class="topbar">
-        <div>
-          <h1>Native Garden Plant Tracker</h1>
-          <p>Track plants, bloom windows, spread, labels, photos, and bed layout around your house.</p>
+  <header>
+    <h1>Jason's Native Garden Planner</h1>
+    <p>Clickable bed map, plant inventory, bloom timing, spread notes, and printable plant labels.</p>
+  </header>
+
+  <main>
+    <section class="dashboard" id="dashboard"></section>
+
+    <section class="layout">
+      <div class="card map-card">
+        <h2>Yard Map</h2>
+        <div class="map-wrap" aria-label="Clickable yard map">
+          <div class="driveway"></div>
+          <div class="road"></div>
+          <div class="house"></div>
+
+          <div class="zone back-porch-left" data-bed="Back Porch Left">BPL<small>Back Porch Left</small></div>
+          <div class="zone back-porch-right" data-bed="Back Porch Right">BPR<small>Back Porch Right</small></div>
+          <div class="zone front-left" data-bed="Front Left">FL<small>Front Left</small></div>
+          <div class="zone front-right" data-bed="Front Right">FR<small>Front Right</small></div>
+          <div class="zone garage-left" data-bed="Garage Left">GL<small>Garage Left</small></div>
+          <div class="zone garage-right" data-bed="Garage Right">GR<small>Garage Right</small></div>
+          <div class="zone unplanted" data-bed="Unplanted">UP<small>Unplanted</small></div>
         </div>
-        <div class="toolbar no-print">
-          <button id="exportBtn" class="button">Export JSON</button>
-          <label class="button secondary">
-            Import JSON
-            <input id="importInput" type="file" accept="application/json" hidden />
-          </label>
-          <button id="printBtn" class="button secondary">Print</button>
+        <p class="map-caption">Tap/click a bed to view its plants. Drag bed boxes to reposition them; Reset Layout restores the default.</p>
+      </div>
+
+      <div class="card">
+        <div class="controls print-hide">
+          <input id="searchInput" type="search" placeholder="Search plants, beds, notes..." />
+          <select id="bedSelect"></select>
         </div>
-      </header>
 
-      <section class="stats">
-        <article class="stat-card"><div class="stat-label">Total Individual Plants</div><div id="statPlants" class="stat-value">0</div></article>
-        <article class="stat-card"><div class="stat-label">Beds Tracked</div><div id="statBeds" class="stat-value">0</div></article>
-        <article class="stat-card"><div class="stat-label">Native Entries</div><div id="statNative" class="stat-value">0</div></article>
-      </section>
+        <div class="bed-title">
+          <h2 id="bedTitle">Front Right</h2>
+          <div class="print-hide" style="display:flex;gap:.5rem;flex-wrap:wrap;"><button class="secondary" id="resetLayoutBtn" type="button">Reset Layout</button><button class="secondary" onclick="window.print()">Print</button></div>
+        </div>
+        <p class="bed-note" id="bedNote"></p>
+        <div class="plant-list" id="plantList"></div>
+      </div>
+    </section>
 
-      <nav class="tabs no-print">
-        <button class="tab active" data-tab="plants">Plants</button>
-        <button class="tab" data-tab="beds">Beds</button>
-        <button class="tab" data-tab="bloom">Bloom</button>
-        <button class="tab" data-tab="labels">Labels</button>
-        <button class="tab" data-tab="map">Map</button>
-        <button class="tab" data-tab="add">Add Plant</button>
-      </nav>
+    <section class="section-grid">
+      <div class="card">
+        <h2>Bloom Calendar</h2>
+        <div class="timeline" id="bloomTimeline"></div>
+      </div>
 
-      <main>
-        <section id="tab-plants" class="tab-panel active">
-          <div class="filters no-print">
-            <input id="searchInput" class="input" placeholder="Search by name, scientific name, note, bloom month, or bed" />
-            <select id="bedFilter" class="input"></select>
-            <label class="checkbox-row"><input id="nativeOnly" type="checkbox" /> Native only</label>
-          </div>
-          <div id="plantsGrid" class="cards-grid"></div>
-        </section>
+      <div class="card">
+        <h2>Spread / Maintenance Watchlist</h2>
+        <div class="warnings" id="warnings"></div>
+      </div>
 
-        <section id="tab-beds" class="tab-panel">
-          <div id="bedsStack" class="stack"></div>
-        </section>
+      <div class="card">
+        <h2>Printable Labels</h2>
+        <p class="bed-note">Use print mode to print or save these as PDF.</p>
+        <div class="label-grid" id="labelGrid"></div>
+      </div>
+    </section>
+  </main>
 
-        <section id="tab-bloom" class="tab-panel">
-          <div id="bloomStack" class="stack"></div>
-        </section>
-
-        <section id="tab-labels" class="tab-panel">
-          <article class="card">
-            <h2>Printable Labels</h2>
-            <div id="labelsBlock" class="label-block"></div>
-          </article>
-        </section>
-
-        <section id="tab-map" class="tab-panel">
-          <div class="two-col">
-            <article class="card">
-              <h2>Simple Bed Map</h2>
-              <div class="map-block">
-                <div class="map-house">[ HOUSE ]</div>
-                <div class="map-bed">
-                  <strong>Front Left Woodland</strong><br>
-                  Coral Honeysuckle, Southern Bush Honeysuckle, Celandine Poppy, Fameflower, Black-Eyed Susan, Columbine, Woodland Phlox
-                </div>
-                <div class="map-divider">Walkway</div>
-                <div class="map-bed">
-                  <strong>Front Right Meadow</strong><br>
-                  Western Sunflower, Largeflower Aster, Snow Flurry Aster, Fireworks Sundrops, Kobold Blazing Star, Rattlesnake Master, Wild Bergamot, Garden Phlox
-                </div>
-                <div class="map-grid">
-                  <div class="map-bed"><strong>Garage Right</strong><br>Black-Eyed Susan</div>
-                  <div class="map-bed"><strong>Garage Left Rectangle</strong><br>Gray Goldenrod, Butterfly Weed</div>
-                  <div class="map-bed"><strong>Garage Left Peninsula</strong><br>Beardtongue, Rough Blazing Star, Aromatic Aster, Summer Phlox</div>
-                  <div class="map-bed"><strong>Back Porch Right</strong><br>Peonies, Jacob Cline Bee Balm, Mountain Mint, Wild Bergamot, Obedient Plant, Coral Honeysuckle</div>
-                  <div class="map-bed span-2"><strong>Back Porch Left</strong><br>Jacob Cline Bee Balm, Blue Lobelia</div>
-                </div>
-              </div>
-            </article>
-            <article class="card">
-              <h2>Bed Notes</h2>
-              <div id="bedNotes"></div>
-            </article>
-          </div>
-        </section>
-
-        <section id="tab-add" class="tab-panel">
-          <article class="card">
-            <h2>Add a Plant Entry</h2>
-            <form id="addForm" class="form-grid">
-              <label>Common Name<input name="commonName" class="input" required /></label>
-              <label>Scientific Name<input name="scientificName" class="input" required /></label>
-              <label>Quantity<input name="quantity" type="number" min="1" value="1" class="input" /></label>
-              <label>Bed<select name="bed" id="formBed" class="input"></select></label>
-              <label>Sun<input name="sun" class="input" placeholder="Full Sun, Part Shade" /></label>
-              <label>Moisture<input name="moisture" class="input" placeholder="Dry, Medium, Moist" /></label>
-              <label>Bloom Start<input name="bloomStart" class="input" placeholder="May" /></label>
-              <label>Bloom End<input name="bloomEnd" class="input" placeholder="July" /></label>
-              <label>Spread Habit<input name="spread" class="input" placeholder="Clump, rhizomes, reseeding" /></label>
-              <label>Aggression (1–5)<input name="aggression" type="number" min="1" max="5" value="1" class="input" /></label>
-              <label class="full">Notes<textarea name="notes" class="input textarea"></textarea></label>
-              <label class="full">Photo<input id="photoInput" type="file" accept="image/*" class="input" /></label>
-              <div class="full"><img id="photoPreview" class="preview-photo" hidden alt="Preview" /></div>
-              <label class="checkbox-row full"><input name="native" type="checkbox" checked /> Native plant</label>
-              <label class="checkbox-row full"><input name="printLabel" type="checkbox" checked /> Include in printable labels</label>
-              <div class="full"><button class="button" type="submit">Save Plant Entry</button></div>
-            </form>
-          </article>
-        </section>
-      </main>
-    </div>
-  </div>
   <script src="app.js"></script>
 </body>
 </html>
