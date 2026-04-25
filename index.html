@@ -3,398 +3,219 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jason's Native Garden Planner</title>
+  <title>Garden Map</title>
   <style>
-    :root {
-      --bg: #f6f7f2;
-      --card: #ffffff;
-      --text: #1f2a1f;
-      --muted: #66705f;
-      --accent: #4f7f45;
-      --accent-dark: #31552b;
-      --border: #d7ddcf;
-      --warn: #fff3cd;
-      --danger: #f8d7da;
-      --soft: #e8f3e4;
-      --blue: #e7f0ff;
-      --gold: #fff1c7;
-      --rose: #ffe5e5;
-      --purple: #f0e8ff;
-    }
-
-    * { box-sizing: border-box; }
-
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.45;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f5f7f1;
+      color: #1f2a1f;
+      text-align: center;
     }
 
     header {
-      padding: 1.25rem;
-      background: linear-gradient(135deg, #274b24, #5f8f4e);
+      background: #365c2f;
       color: white;
+      padding: 18px;
     }
 
-    header h1 {
+    h1 {
       margin: 0;
-      font-size: clamp(1.7rem, 5vw, 2.6rem);
-      letter-spacing: -0.03em;
+      font-size: 28px;
     }
 
-    header p { margin: 0.35rem 0 0; opacity: 0.92; max-width: 900px; }
-
-    main { max-width: 1200px; margin: 0 auto; padding: 1rem; }
-
-    .dashboard {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 0.75rem;
-      margin-bottom: 1rem;
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 16px;
     }
 
-    .stat, .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      box-shadow: 0 8px 20px rgba(31,42,31,0.06);
+    .controls {
+      margin: 12px 0;
     }
 
-    .stat { padding: 1rem; border-radius: 18px; }
-    .stat .number { font-size: 1.8rem; font-weight: 800; color: var(--accent-dark); }
-    .stat .label { color: var(--muted); font-size: 0.9rem; }
-
-    .layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.3fr);
-      gap: 1rem;
-      align-items: start;
+    button {
+      padding: 10px 14px;
+      border: none;
+      border-radius: 8px;
+      background: #4f7f45;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 4px;
     }
 
-    .card { padding: 1rem; }
-    .card h2, .card h3 { margin-top: 0; }
+    button.secondary {
+      background: #e6eee1;
+      color: #2f4f2b;
+      border: 1px solid #cbd8c4;
+    }
 
-    .map-wrap {
+    .map {
       position: relative;
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      min-height: 360px;
-      border-radius: 22px;
+      width: min(92vw, 520px);
+      height: min(92vw, 520px);
+      max-width: 520px;
+      max-height: 520px;
+      margin: 16px auto;
+      background: #cbdcbd;
+      border: 2px solid #9daf8f;
+      border-radius: 18px;
       overflow: hidden;
-      background: #cad8bc;
-      border: 1px solid var(--border);
+      touch-action: none;
     }
 
     .house {
       position: absolute;
       left: 32%;
-      top: 40%;
+      top: 39%;
       width: 36%;
       height: 28%;
       background: #555;
       transform: rotate(18deg);
       border-radius: 10px;
-      box-shadow: inset 0 0 0 4px rgba(255,255,255,.35), 0 12px 35px rgba(0,0,0,.25);
+      opacity: 0.9;
     }
 
     .driveway {
       position: absolute;
-      left: -5%;
+      left: -8%;
       top: 58%;
-      width: 42%;
-      height: 16%;
-      background: #dad6cc;
+      width: 45%;
+      height: 15%;
+      background: #ddd8ce;
       transform: rotate(-18deg);
       border-radius: 999px;
-      opacity: .95;
+      opacity: 0.9;
     }
 
     .road {
       position: absolute;
-      right: -20%;
-      bottom: 5%;
+      right: -18%;
+      bottom: 8%;
       width: 70%;
       height: 10%;
-      background: #b9b9b9;
+      background: #b8b8b8;
       transform: rotate(-18deg);
-      opacity: .65;
       border-radius: 999px;
+      opacity: 0.65;
     }
 
     .zone {
       position: absolute;
-      border: 2px solid rgba(35, 72, 32, 0.65);
-      border-radius: 18px;
-      padding: 0.45rem;
-      text-align: center;
-      font-weight: 800;
-      cursor: pointer;
-      background: rgba(255,255,255,.76);
-      backdrop-filter: blur(2px);
-      transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
-      user-select: none;
-    }
-
-    .zone:hover, .zone.active {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 18px rgba(0,0,0,.18);
-      background: #ffffff;
-    }
-
-    .zone small {
-      display: block;
-      font-weight: 600;
-      color: #41503b;
-      font-size: .72rem;
-    }
-
-    .front-right { right: 5%; bottom: 14%; width: 28%; height: 18%; background: var(--blue); }
-    .front-left { left: 7%; bottom: 15%; width: 28%; height: 18%; background: var(--gold); }
-    .garage-left { left: 11%; top: 45%; width: 22%; height: 16%; background: var(--rose); }
-    .garage-right { left: 28%; top: 59%; width: 16%; height: 12%; background: var(--purple); }
-    .back-porch-left { left: 17%; top: 25%; width: 28%; height: 16%; background: var(--soft); }
-    .back-porch-right { right: 18%; top: 22%; width: 30%; height: 18%; background: #d9f2dc; }
-    .unplanted { right: 5%; top: 5%; width: 26%; height: 11%; background: #f5f5f5; }
-
-    .map-caption { color: var(--muted); margin: .75rem 0 0; font-size: .9rem; }
-
-    .controls {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(160px, .5fr);
-      gap: .75rem;
-      margin-bottom: .75rem;
-    }
-
-    input, select, button { font: inherit; }
-
-    input, select {
-      width: 100%;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: .75rem .85rem;
-      background: #fff;
-      color: var(--text);
-    }
-
-    button {
-      border: 0;
-      background: var(--accent);
-      color: white;
-      border-radius: 14px;
-      padding: .75rem .9rem;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    button.secondary {
-      background: #e8eee4;
-      color: var(--accent-dark);
-      border: 1px solid var(--border);
-    }
-
-    .bed-title {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: .5rem;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: .7rem;
-      margin-bottom: .8rem;
-    }
-
-    .bed-title h2 { margin: 0; }
-    .bed-note { color: var(--muted); margin: 0 0 .8rem; }
-
-    .plant-list { display: grid; gap: .75rem; }
-
-    .plant-card {
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: .85rem;
-      background: #fff;
-    }
-
-    .plant-card h3 { margin: 0; font-size: 1.05rem; }
-    .sci { font-style: italic; color: var(--muted); margin: .15rem 0 .45rem; }
-
-    .meta { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .45rem; }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      border-radius: 999px;
-      background: #eef4ea;
-      border: 1px solid #dbe6d4;
-      padding: .22rem .55rem;
-      font-size: .82rem;
-      color: #31472d;
-    }
-
-    .pill.warn { background: var(--warn); border-color: #e2c66d; }
-    .pill.danger { background: var(--danger); border-color: #de9aa2; }
-
-    .timeline {
-      display: grid;
-      grid-template-columns: 120px repeat(10, minmax(34px, 1fr));
-      gap: .25rem;
-      align-items: center;
-      font-size: .78rem;
-      overflow-x: auto;
-      padding-bottom: .25rem;
-    }
-
-    .timeline .month, .timeline .plant-name {
-      font-weight: 700;
-      color: var(--muted);
-      padding: .35rem;
-    }
-
-    .bar-cell {
-      height: 22px;
-      border-radius: 999px;
-      background: #edf1e8;
-      border: 1px solid #dce4d7;
-    }
-
-    .bar-cell.on { background: #7fb56f; border-color: #5c9a4b; }
-
-    .section-grid { display: grid; gap: 1rem; margin-top: 1rem; }
-    .warnings { display: grid; gap: .55rem; }
-
-    .warning {
-      border-left: 5px solid #d89a1d;
-      background: #fff8e7;
-      border-radius: 12px;
-      padding: .7rem .8rem;
-    }
-
-    .label-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: .5rem;
-    }
-
-    .label-card {
-      border: 1px dashed #7b856f;
-      border-radius: 12px;
-      padding: .7rem;
-      min-height: 90px;
-      background: #fff;
-    }
-
-    .label-card strong { display: block; }
-    .label-card em { display: block; color: var(--muted); font-size: .86rem; margin-top: .15rem; }
-
-
-    .zone {
-      transform: rotate(18deg);
-      transform-origin: center;
+      width: 78px;
+      height: 48px;
+      border: 2px solid #24451f;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.88);
+      color: #172417;
+      font-weight: bold;
+      font-size: 14px;
       cursor: grab;
+      transform: rotate(18deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
       touch-action: none;
-      font-size: .82rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     }
 
-    .zone:hover, .zone.active {
-      transform: rotate(18deg) translateY(-2px);
-    }
-
-    .zone.dragging {
+    .zone:active {
       cursor: grabbing;
-      opacity: .9;
-      z-index: 20;
     }
 
-    .zone small {
-      font-size: .62rem;
-      line-height: 1.05;
+    .zone.active {
+      background: #fff4b8;
+      border-color: #a67c00;
     }
 
-    .front-right { right: 8%; bottom: 17%; width: 21%; height: 13%; }
-    .front-left { left: 9%; bottom: 18%; width: 21%; height: 13%; }
-    .garage-left { left: 13%; top: 47%; width: 17%; height: 11%; }
-    .garage-right { left: 31%; top: 60%; width: 13%; height: 9%; }
-    .back-porch-left { left: 20%; top: 27%; width: 21%; height: 11%; }
-    .back-porch-right { right: 21%; top: 24%; width: 22%; height: 12%; }
-
-
-    @media (max-width: 850px) {
-      .dashboard { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .layout { grid-template-columns: 1fr; }
-      .map-wrap { min-height: 330px; }
-      .controls { grid-template-columns: 1fr; }
+    .small-zone {
+      width: 66px;
+      height: 42px;
+      font-size: 13px;
     }
 
-    @media print {
-      header, .map-card, .controls, .print-hide, button { display: none !important; }
-      body { background: white; }
-      main { max-width: none; padding: 0; }
-      .layout { display: block; }
-      .card { box-shadow: none; border: none; }
-      .plant-card, .label-card { break-inside: avoid; }
+    #FR { left: 360px; top: 370px; }
+    #FL { left: 65px; top: 370px; }
+    #GL { left: 85px; top: 250px; }
+    #GR { left: 180px; top: 320px; }
+    #BPL { left: 115px; top: 135px; }
+    #BPR { left: 295px; top: 125px; }
+
+    .panel {
+      background: white;
+      border: 1px solid #d5decf;
+      border-radius: 16px;
+      padding: 16px;
+      margin: 16px auto;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+      text-align: left;
+      max-width: 620px;
+    }
+
+    .panel h2 {
+      margin-top: 0;
+      text-align: center;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 24px;
+      line-height: 1.7;
+    }
+
+    .hint {
+      color: #5e6a5a;
+      font-size: 14px;
+      margin-top: 8px;
+    }
+
+    @media (max-width: 600px) {
+      .zone {
+        width: 62px;
+        height: 38px;
+        font-size: 12px;
+      }
+
+      .small-zone {
+        width: 54px;
+        height: 34px;
+        font-size: 11px;
+      }
     }
   </style>
 </head>
+
 <body>
   <header>
-    <h1>Jason's Native Garden Planner</h1>
-    <p>Clickable bed map, plant inventory, bloom timing, spread notes, and printable plant labels.</p>
+    <h1>Garden Map</h1>
+    <p>Tap a bed to view plants. Drag beds to reposition them.</p>
   </header>
 
   <main>
-    <section class="dashboard" id="dashboard"></section>
+    <div class="controls">
+      <button class="secondary" id="resetButton">Reset Bed Positions</button>
+    </div>
 
-    <section class="layout">
-      <div class="card map-card">
-        <h2>Yard Map</h2>
-        <div class="map-wrap" aria-label="Clickable yard map">
-          <div class="driveway"></div>
-          <div class="road"></div>
-          <div class="house"></div>
+    <div class="map" id="map">
+      <div class="driveway"></div>
+      <div class="road"></div>
+      <div class="house"></div>
 
-        <div class="zone" id="FR" data-bed="Front Right">FR</div>
-<div class="zone" id="FL" data-bed="Front Left">FL</div>
-<div class="zone" id="GL" data-bed="Garage Left">GL</div>
-<div class="zone" id="GR" data-bed="Garage Right">GR</div>
-<div class="zone" id="BPL" data-bed="Back Porch Left">BPL</div>
-<div class="zone" id="BPR" data-bed="Back Porch Right">BPR</div>
-        </div>
-        <p class="map-caption">Tap/click a bed to view its plants. Drag bed boxes to reposition them; Reset Layout restores the default.</p>
-      </div>
+      <div class="zone" id="FL" data-bed="Front Left">FL</div>
+      <div class="zone" id="FR" data-bed="Front Right">FR</div>
+      <div class="zone" id="GL" data-bed="Garage Left">GL</div>
+      <div class="zone small-zone" id="GR" data-bed="Garage Right">GR</div>
+      <div class="zone" id="BPL" data-bed="Back Porch Left">BPL</div>
+      <div class="zone" id="BPR" data-bed="Back Porch Right">BPR</div>
+    </div>
 
-      <div class="card">
-        <div class="controls print-hide">
-          <input id="searchInput" type="search" placeholder="Search plants, beds, notes..." />
-          <select id="bedSelect"></select>
-        </div>
+    <p class="hint">If dragging feels awkward, tap first to view the bed, then drag slowly. Positions save automatically on this device.</p>
 
-        <div class="bed-title">
-          <h2 id="bedTitle">Front Right</h2>
-          <div class="print-hide" style="display:flex;gap:.5rem;flex-wrap:wrap;"><button class="secondary" id="resetLayoutBtn" type="button">Reset Layout</button><button class="secondary" onclick="window.print()">Print</button></div>
-        </div>
-        <p class="bed-note" id="bedNote"></p>
-        <div class="plant-list" id="plantList"></div>
-      </div>
-    </section>
-
-    <section class="section-grid">
-      <div class="card">
-        <h2>Bloom Calendar</h2>
-        <div class="timeline" id="bloomTimeline"></div>
-      </div>
-
-      <div class="card">
-        <h2>Spread / Maintenance Watchlist</h2>
-        <div class="warnings" id="warnings"></div>
-      </div>
-
-      <div class="card">
-        <h2>Printable Labels</h2>
-        <p class="bed-note">Use print mode to print or save these as PDF.</p>
-        <div class="label-grid" id="labelGrid"></div>
-      </div>
+    <section class="panel">
+      <h2 id="bedTitle">Front Right</h2>
+      <ul id="plantList"></ul>
     </section>
   </main>
 
