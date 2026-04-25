@@ -57,15 +57,27 @@ const gardenData = {
   ]
 };
 
+/* CLEAN DISPLAY NAMES */
+const displayNames = {
+  "Front Right": "Front Yard — Right Bed",
+  "Front Left": "Front Yard — Left Bed",
+  "Garage Left": "Garage Side — Left Bed",
+  "Garage Right": "Garage Side — Right Bed",
+  "Back Porch Left": "Rear Yard — Left Bed",
+  "Back Porch Right": "Rear Yard — Right Bed"
+};
+
 const zones = document.querySelectorAll(".zone");
 const title = document.getElementById("bedTitle");
 const plantList = document.getElementById("plantList");
 
+/* SHOW BED */
 function showBed(bed) {
-  title.textContent = bed;
+  title.textContent = displayNames[bed] || bed;
   plantList.innerHTML = "";
 
   zones.forEach(z => z.classList.remove("active"));
+
   zones.forEach(z => {
     if (z.dataset.bed === bed) z.classList.add("active");
   });
@@ -82,16 +94,17 @@ function showBed(bed) {
   });
 }
 
-/* ONLY CLICK — NO DRAGGING */
+/* CLICK ONLY (NO DRAGGING) */
 zones.forEach(zone => {
   zone.addEventListener("click", () => {
     showBed(zone.dataset.bed);
   });
 });
 
-/* Reset button still works */
+/* RESET BUTTON */
 document.getElementById("resetButton").onclick = () => {
   location.reload();
 };
 
+/* DEFAULT LOAD */
 showBed("Front Right");
