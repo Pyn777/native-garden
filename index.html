@@ -318,7 +318,7 @@
     .garage-right { left: 31%; top: 60%; width: 13%; height: 9%; }
     .back-porch-left { left: 20%; top: 27%; width: 21%; height: 11%; }
     .back-porch-right { right: 21%; top: 24%; width: 22%; height: 12%; }
-    .unplanted { right: 7%; top: 7%; width: 20%; height: 8%; }
+
 
     @media (max-width: 850px) {
       .dashboard { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -354,13 +354,12 @@
           <div class="road"></div>
           <div class="house"></div>
 
-          <div class="zone back-porch-left" data-bed="Back Porch Left">BPL<small>Back Porch Left</small></div>
-          <div class="zone back-porch-right" data-bed="Back Porch Right">BPR<small>Back Porch Right</small></div>
-          <div class="zone front-left" data-bed="Front Left">FL<small>Front Left</small></div>
-          <div class="zone front-right" data-bed="Front Right">FR<small>Front Right</small></div>
-          <div class="zone garage-left" data-bed="Garage Left">GL<small>Garage Left</small></div>
-          <div class="zone garage-right" data-bed="Garage Right">GR<small>Garage Right</small></div>
-          <div class="zone unplanted" data-bed="Unplanted">UP<small>Unplanted</small></div>
+        <div class="zone" id="FR" data-bed="Front Right">FR</div>
+<div class="zone" id="FL" data-bed="Front Left">FL</div>
+<div class="zone" id="GL" data-bed="Garage Left">GL</div>
+<div class="zone" id="GR" data-bed="Garage Right">GR</div>
+<div class="zone" id="BPL" data-bed="Back Porch Left">BPL</div>
+<div class="zone" id="BPR" data-bed="Back Porch Right">BPR</div>
         </div>
         <p class="map-caption">Tap/click a bed to view its plants. Drag bed boxes to reposition them; Reset Layout restores the default.</p>
       </div>
