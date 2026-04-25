@@ -13,20 +13,17 @@ const gardenData = {
     { name: "Blue Moon phlox", bloom: "Mar–May" }
   ],
 
-  "Back Porch Right": [
-    { name: "Peonies (2)", bloom: "Apr–May" },
-    { name: "Jacob Cline bee balm (3)", bloom: "Jun–Aug" },
-    { name: "Wild bergamot", bloom: "Jun–Aug" },
-    { name: "Spotted bee balm", bloom: "Jul–Sep" },
-    { name: "Mountain mint", bloom: "Jul–Sep" },
-    { name: "Obedient plant", bloom: "Jul–Sep" },
-    { name: "Coral honeysuckle", bloom: "Apr–Jun" },
-   ],
-
-  "Back Porch Left": [
-    { name: "Jacob Cline bee balm (2)", bloom: "Jun–Aug" },
-    { name: "Blue lobelia", bloom: "Jul–Sep" }
-   { name: "Purple passionflower", bloom: "Jun–Aug" }
+  "Front Left": [
+    { name: "Southern bush honeysuckle (2)", bloom: "Jun–Jul" },
+    { name: "Prairie golden aster", bloom: "Aug–Oct" },
+    { name: "Wild columbine", bloom: "Apr–May" },
+    { name: "Fameflower", bloom: "Jun–Sep" },
+    { name: "Celandine poppy", bloom: "Mar–May" },
+    { name: "Native white petunia", bloom: "Jun–Sep" },
+    { name: "Coral honeysuckle (2)", bloom: "Apr–Jun" },
+    { name: "Tennessee coneflower", bloom: "Jun–Aug" },
+    { name: "Black-eyed Susan (2)", bloom: "Jun–Sep" },
+    { name: "Anise hyssop", bloom: "Jun–Sep" }
   ],
 
   "Garage Left": [
@@ -43,17 +40,20 @@ const gardenData = {
     { name: "Butterfly weed (2 tubers)", bloom: "Jun–Aug" }
   ],
 
-  "Front Left": [
-    { name: "Southern bush honeysuckle (2)", bloom: "Jun–Jul" },
-    { name: "Prairie golden aster", bloom: "Aug–Oct" },
-    { name: "Wild columbine", bloom: "Apr–May" },
-    { name: "Fameflower", bloom: "Jun–Sep" },
-    { name: "Celandine poppy", bloom: "Mar–May" },
-    { name: "Native white petunia", bloom: "Jun–Sep" },
-    { name: "Coral honeysuckle (2)", bloom: "Apr–Jun" },
-    { name: "Tennessee coneflower", bloom: "Jun–Aug" },
-    { name: "Black-eyed Susan (2)", bloom: "Jun–Sep" },
-    { name: "Anise hyssop", bloom: "Jun–Sep" }
+  "Back Porch Right": [
+    { name: "Peonies (2)", bloom: "Apr–May" },
+    { name: "Jacob Cline bee balm (3)", bloom: "Jun–Aug" },
+    { name: "Wild bergamot", bloom: "Jun–Aug" },
+    { name: "Spotted bee balm", bloom: "Jul–Sep" },
+    { name: "Mountain mint", bloom: "Jul–Sep" },
+    { name: "Obedient plant", bloom: "Jul–Sep" },
+    { name: "Coral honeysuckle", bloom: "Apr–Jun" },
+    { name: "Purple passionflower (Passiflora incarnata)", bloom: "Jun–Aug" }
+  ],
+
+  "Back Porch Left": [
+    { name: "Jacob Cline bee balm (2)", bloom: "Jun–Aug" },
+    { name: "Blue lobelia", bloom: "Jul–Sep" }
   ]
 };
 
@@ -81,7 +81,7 @@ function showBed(bed) {
 
   gardenData[bed].forEach(p => {
     const li = document.createElement("li");
-    li.textContent = p;
+    li.textContent = `${p.name} (${p.bloom})`;
     plantList.appendChild(li);
   });
 }
