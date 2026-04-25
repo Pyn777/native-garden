@@ -1,11 +1,11 @@
-const gardenData = {
+{ const gardenData = {
   "Front Right": [
     { name: "Wild bergamot", scientific: "Monarda fistulosa", bloom: "Jun–Aug", planted: "Spring 2026", notes: "Pollinator plant; can spread by rhizomes and seed." },
     { name: "Largeflower aster (2)", scientific: "Symphyotrichum grandiflorum", bloom: "Sep–Oct", planted: "Spring 2026", notes: "Late-season fall bloom." },
     { name: "Rattlesnake master", scientific: "Eryngium yuccifolium", bloom: "Jun–Aug", planted: "Spring 2026", notes: "Architectural plant; slow early growth." },
     { name: "Western sunflower (2)", scientific: "Helianthus occidentalis", bloom: "Jul–Sep", planted: "Spring 2026", notes: "Tall yellow summer bloom." },
-    { name: "Kobold blazing star (5)", scientific: "Liatris spicata ‘Kobold’", bloom: "Jul–Aug", planted: "Spring 2026", notes: "Purple vertical spikes; good pollinator plant." },
-    { name: "Snow Flurry aster (3)", scientific: "Symphyotrichum ericoides ‘Snow Flurry’", bloom: "Sep–Oct", planted: "Spring 2026", notes: "Low spreading fall aster." },
+    { name: "Kobold blazing star (5)", scientific: "Liatris spicata", bloom: "Jul–Aug", planted: "Spring 2026", notes: "Purple vertical spikes; good pollinator plant." },
+    { name: "Snow Flurry aster (3)", scientific: "Symphyotrichum ericoides", bloom: "Sep–Oct", planted: "Spring 2026", notes: "Low spreading fall aster." },
     { name: "Fireworks sundrops (3)", scientific: "Oenothera lindheimeri", bloom: "May–Sep", planted: "Spring 2026", notes: "Airy texture; may move in wind." },
     { name: "Garden phlox", scientific: "Phlox paniculata", bloom: "Jun–Aug", planted: "Spring 2026", notes: "Watch for powdery mildew later in season." },
     { name: "Lanceleaf coreopsis", scientific: "Coreopsis lanceolata", bloom: "May–Jul", planted: "Spring 2026", notes: "Can reseed lightly." },
@@ -15,7 +15,7 @@ const gardenData = {
 
   "Front Left": [
     { name: "Southern bush honeysuckle (2)", scientific: "Diervilla sessilifolia", bloom: "Jun–Jul", planted: "Spring 2026", notes: "Native shrub; moved here together." },
-    { name: "Prairie golden aster", scientific: "Chrysopsis spp.", bloom: "Aug–Oct", planted: "Spring 2026", notes: "Late yellow bloom; good dry sunny plant." },
+    { name: "Prairie golden aster", scientific: "Chrysopsis", bloom: "Aug–Oct", planted: "Spring 2026", notes: "Late yellow bloom; good dry sunny plant." },
     { name: "Wild columbine", scientific: "Aquilegia canadensis", bloom: "Apr–May", planted: "Spring 2026", notes: "Early bloomer; may reseed." },
     { name: "Fameflower", scientific: "Phemeranthus calycinus", bloom: "Jun–Sep", planted: "Spring 2026", notes: "Low dry-site plant." },
     { name: "Celandine poppy", scientific: "Stylophorum diphyllum", bloom: "Mar–May", planted: "Spring 2026", notes: "May go dormant or look rough in summer." },
@@ -30,7 +30,7 @@ const gardenData = {
     { name: "Aromatic aster", scientific: "Symphyotrichum oblongifolium", bloom: "Sep–Oct", planted: "Spring 2026", notes: "Late fall color." },
     { name: "Summer phlox", scientific: "Phlox paniculata", bloom: "Jun–Aug", planted: "Spring 2026", notes: "Mid-summer color." },
     { name: "Rough blazing star (2)", scientific: "Liatris aspera", bloom: "Jul–Sep", planted: "Spring 2026", notes: "Tall purple spikes." },
-    { name: "Beardtongue (3)", scientific: "Penstemon digitalis ‘Husker Red’", bloom: "May–Jun", planted: "Spring 2026", notes: "Early bloom; upright structure." },
+    { name: "Beardtongue (3)", scientific: "Penstemon digitalis", bloom: "May–Jun", planted: "Spring 2026", notes: "Early bloom; upright structure." },
     { name: "Gray goldenrod", scientific: "Solidago nemoralis", bloom: "Aug–Oct", planted: "Moved Spring 2026", notes: "Recently moved; may look rough while recovering." },
     { name: "Butterfly weed (8 tubers)", scientific: "Asclepias tuberosa", bloom: "Jun–Aug", planted: "Spring 2026", notes: "Tubers may emerge late; do not move once established." }
   ],
@@ -41,8 +41,8 @@ const gardenData = {
   ],
 
   "Back Porch Right": [
-    { name: "Peonies (2)", scientific: "Paeonia spp.", bloom: "Apr–May", planted: "Established", notes: "Huge established anchors." },
-    { name: "Jacob Cline bee balm (3)", scientific: "Monarda didyma ‘Jacob Cline’", bloom: "Jun–Aug", planted: "Spring 2026 / established", notes: "Spreads by rhizomes; watch around peonies." },
+    { name: "Peonies (2)", scientific: "Paeonia", bloom: "Apr–May", planted: "Established", notes: "Huge established anchors." },
+    { name: "Jacob Cline bee balm (3)", scientific: "Monarda didyma", bloom: "Jun–Aug", planted: "Spring 2026 / established", notes: "Spreads by rhizomes; watch around peonies." },
     { name: "Wild bergamot", scientific: "Monarda fistulosa", bloom: "Jun–Aug", planted: "Spring 2026", notes: "Can spread; pollinator plant." },
     { name: "Spotted bee balm", scientific: "Monarda punctata", bloom: "Jul–Sep", planted: "Spring 2026", notes: "Added later; drought-tolerant Monarda." },
     { name: "Mountain mint", scientific: "Pycnanthemum virginianum", bloom: "Jul–Sep", planted: "Spring 2026", notes: "Excellent pollinator plant; spreads gradually." },
@@ -52,7 +52,7 @@ const gardenData = {
   ],
 
   "Back Porch Left": [
-    { name: "Jacob Cline bee balm (2)", scientific: "Monarda didyma ‘Jacob Cline’", bloom: "Jun–Aug", planted: "Spring 2026", notes: "Will spread; watch blue lobelia space." },
+    { name: "Jacob Cline bee balm (2)", scientific: "Monarda didyma", bloom: "Jun–Aug", planted: "Spring 2026", notes: "Will spread; watch blue lobelia space." },
     { name: "Blue lobelia", scientific: "Lobelia siphilitica", bloom: "Jul–Sep", planted: "Spring 2026", notes: "Likes more moisture." }
   ]
 };
@@ -69,7 +69,24 @@ let startLeft = 0;
 let startTop = 0;
 let moved = false;
 
-function showBed(bed) {
+async function getPlantImage(scientificName) {
+  const cleanName = scientificName.replace(/[‘’']/g, "").split(" ").slice(0, 2).join("_");
+
+  try {
+    const response = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${cleanName}`);
+    const data = await response.json();
+
+    if (data.thumbnail && data.thumbnail.source) {
+      return data.thumbnail.source;
+    }
+  } catch (error) {
+    console.log("Image not found for", scientificName);
+  }
+
+  return "";
+}
+
+async function showBed(bed) {
   title.textContent = bed;
   plantList.innerHTML = "";
 
@@ -79,17 +96,43 @@ function showBed(bed) {
     if (z.dataset.bed === bed) z.classList.add("active");
   });
 
-  gardenData[bed].forEach(p => {
+  for (const p of gardenData[bed]) {
     const li = document.createElement("li");
     li.innerHTML = `
       <strong>${p.name}</strong><br>
       <em>${p.scientific}</em><br>
+      <span>Loading image...</span><br>
       Bloom: ${p.bloom}<br>
       Planted: ${p.planted}<br>
       Notes: ${p.notes}
+      <br><br>
     `;
     plantList.appendChild(li);
-  });
+
+    const imageUrl = await getPlantImage(p.scientific);
+
+    if (imageUrl) {
+      li.innerHTML = `
+        <strong>${p.name}</strong><br>
+        <em>${p.scientific}</em><br>
+        <img src="${imageUrl}" alt="${p.name}" style="width:100%; max-width:220px; border-radius:10px; margin:8px 0;"><br>
+        Bloom: ${p.bloom}<br>
+        Planted: ${p.planted}<br>
+        Notes: ${p.notes}
+        <br><br>
+      `;
+    } else {
+      li.innerHTML = `
+        <strong>${p.name}</strong><br>
+        <em>${p.scientific}</em><br>
+        <span style="color:#777;">No image available</span><br>
+        Bloom: ${p.bloom}<br>
+        Planted: ${p.planted}<br>
+        Notes: ${p.notes}
+        <br><br>
+      `;
+    }
+  }
 }
 
 zones.forEach(zone => {
@@ -170,6 +213,9 @@ function resetPositions() {
 }
 
 document.getElementById("resetButton").onclick = resetPositions;
+
+loadPositions();
+showBed("Front Right");
 
 loadPositions();
 showBed("Front Right");
