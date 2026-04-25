@@ -1,4 +1,4 @@
-{ const gardenData = {
+const gardenData = {
   "Front Right": [
     { name: "Wild bergamot", scientific: "Monarda fistulosa", bloom: "Jun–Aug", planted: "Spring 2026", notes: "Pollinator plant; can spread by rhizomes and seed." },
     { name: "Largeflower aster (2)", scientific: "Symphyotrichum grandiflorum", bloom: "Sep–Oct", planted: "Spring 2026", notes: "Late-season fall bloom." },
@@ -213,9 +213,6 @@ function resetPositions() {
 }
 
 document.getElementById("resetButton").onclick = resetPositions;
-
-loadPositions();
-showBed("Front Right");
 
 loadPositions();
 showBed("Front Right");
