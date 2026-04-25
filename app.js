@@ -12,7 +12,6 @@ const gardenData = {
     "Threadleaf coreopsis",
     "Blue Moon phlox"
   ],
-
   "Front Left": [
     "Southern bush honeysuckle (2)",
     "Prairie golden aster",
@@ -25,7 +24,6 @@ const gardenData = {
     "Black-eyed Susan (2)",
     "Anise hyssop"
   ],
-
   "Garage Left": [
     "Aromatic aster",
     "Summer phlox",
@@ -34,100 +32,121 @@ const gardenData = {
     "Gray goldenrod",
     "Butterfly weed (8 tubers)"
   ],
-
   "Garage Right": [
     "Black-eyed Susan (2)",
     "Butterfly weed (2 tubers)"
   ],
-
   "Back Porch Right": [
     "Peonies (2)",
-    "Jacob Cline (3)",
+    "Jacob Cline bee balm (3)",
     "Wild bergamot",
     "Spotted bee balm",
     "Mountain mint",
     "Obedient plant",
     "Coral honeysuckle",
-    "Purple passionflower (Passiflora incarnata)" // added here
+    "Purple passionflower"
   ],
-
   "Back Porch Left": [
-    "Jacob Cline (2)",
+    "Jacob Cline bee balm (2)",
     "Blue lobelia"
   ]
 };
 
 const plantList = document.getElementById("plantList");
 const title = document.getElementById("title");
+const zones = document.querySelectorAll(".zone");
+const map = document.getElementById("map");
+
+let activeZone = null;
+let startX = 0;
+let startY = 0;
+let startLeft = 0;
+let startTop = 0;
+let didDrag = false;
 
 function showBed(bed) {
   title.textContent = bed;
   plantList.innerHTML = "";
 
-  gardenData[bed].forEach(p => {
+  gardenData[bed].forEach(plant => {
     const li = document.createElement("li");
-    li.textContent = p;
+    li.textContent = plant;
     plantList.appendChild(li);
   });
 }
 
-/* -------- DRAG FUNCTIONALITY -------- */
-
-const zones = document.querySelectorAll(".zone");
-let active = null;
-let offsetX = 0;
-let offsetY = 0;
-
 zones.forEach(zone => {
   zone.addEventListener("pointerdown", e => {
-    active = zone;
-    offsetX = e.offsetX;
-    offsetY = e.offsetY;
+    activeZone = zone;
+    didDrag = false;
+
+    startX = e.clientX;
+    startY = e.clientY;
+    startLeft = zone.offsetLeft;
+    startTop = zone.offsetTop;
+
     zone.setPointerCapture(e.pointerId);
   });
 
   zone.addEventListener("pointermove", e => {
-    if (!active) return;
+    if (!activeZone) return;
 
-    const map = document.getElementById("map");
-    const rect = map.getBoundingClientRect();
+    const dx = e.clientX - startX;
+    const dy = e.clientY - startY;
 
-    let x = e.clientX - rect.left - offsetX;
-    let y = e.clientY - rect.top - offsetY;
+    if (Math.abs(dx) > 4 || Math.abs(dy) > 4) {
+      didDrag = true;
+    }
 
-    active.style.left = x + "px";
-    active.style.top = y + "px";
+    const mapRect = map.getBoundingClientRect();
+    const zoneRect = activeZone.getBoundingClientRect();
+
+    let newLeft = startLeft + dx;
+    let newTop = startTop + dy;
+
+    newLeft = Math.max(0, Math.min(newLeft, mapRect.width - zoneRect.width));
+    newTop = Math.max(0, Math.min(newTop, mapRect.height - zoneRect.height));
+
+    activeZone.style.left = newLeft + "px";
+    activeZone.style.top = newTop + "px";
   });
 
-  zone.addEventListener("pointerup", () => {
-    if (!active) return;
+  zone.addEventListener("pointerup", e => {
+    if (!activeZone) return;
 
     savePositions();
-    active = null;
+
+    if (!didDrag) {
+      showBed(activeZone.dataset.bed || activeZone.textContent.trim());
+    }
+
+    activeZone = null;
   });
 });
 
-/* -------- SAVE / LOAD -------- */
-
 function savePositions() {
-  const data = {};
-  zones.forEach(z => {
-    data[z.id] = {
-      left: z.style.left,
-      top: z.style.top
+  const saved = {};
+
+  zones.forEach(zone => {
+    saved[zone.id] = {
+      left: zone.style.left || zone.offsetLeft + "px",
+      top: zone.style.top || zone.offsetTop + "px"
     };
   });
-  localStorage.setItem("gardenLayout", JSON.stringify(data));
+
+  localStorage.setItem("gardenLayout", JSON.stringify(saved));
 }
 
 function loadPositions() {
-  const data = JSON.parse(localStorage.getItem("gardenLayout"));
-  if (!data) return;
+  const saved = localStorage.getItem("gardenLayout");
+  if (!saved) return;
 
-  zones.forEach(z => {
-    if (data[z.id]) {
-      z.style.left = data[z.id].left;
-      z.style.top = data[z.id].top;
+  const positions = JSON.parse(saved);
+
+  zones.forEach(zone => {
+    if (positions[zone.id]) {
+      zone.style.left = positions[zone.id].left;
+      zone.style.top = positions[zone.id].top;
     }
   });
 }
@@ -138,3 +157,4 @@ function resetPositions() {
 }
 
 loadPositions();
+showBed("Front Right");
