@@ -3,221 +3,165 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Garden Map</title>
+  <title>Native Garden Planner</title>
+
   <style>
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: Arial, sans-serif;
       background: #f5f7f1;
       color: #1f2a1f;
-      text-align: center;
     }
 
     header {
       background: #365c2f;
       color: white;
       padding: 18px;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: 28px;
+      text-align: center;
     }
 
     main {
       max-width: 900px;
-      margin: 0 auto;
-      padding: 16px;
+      margin: auto;
+      padding: 14px;
     }
 
-    .controls {
-      margin: 12px 0;
-    }
-
-    button {
-      padding: 10px 14px;
-      border: none;
-      border-radius: 8px;
-      background: #4f7f45;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-      margin: 4px;
-    }
-
-    button.secondary {
-      background: #e6eee1;
-      color: #2f4f2b;
-      border: 1px solid #cbd8c4;
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 14px;
+      margin-bottom: 14px;
+      box-shadow: 0 4px 14px rgba(0,0,0,.08);
     }
 
     .map {
       position: relative;
-      width: min(92vw, 520px);
-      height: min(92vw, 520px);
-      max-width: 520px;
-      max-height: 520px;
-      margin: 16px auto;
+      width: min(92vw, 440px);
+      height: min(92vw, 440px);
+      margin: auto;
       background: #cbdcbd;
       border: 2px solid #9daf8f;
       border-radius: 18px;
       overflow: hidden;
-      touch-action: none;
     }
 
     .house {
       position: absolute;
-      left: 32%;
-      top: 39%;
-      width: 36%;
-      height: 28%;
-      background: #555;
-      transform: rotate(18deg);
+      left: 33%;
+      top: 35%;
+      width: 38%;
+      height: 26%;
+      background: #686d68;
       border-radius: 10px;
-      opacity: 0.9;
-    }
-
-    .driveway {
-      position: absolute;
-      left: -8%;
-      top: 58%;
-      width: 45%;
-      height: 15%;
-      background: #ddd8ce;
-      transform: rotate(-18deg);
-      border-radius: 999px;
-      opacity: 0.9;
-    }
-
-    .road {
-      position: absolute;
-      right: -18%;
-      bottom: 8%;
-      width: 70%;
-      height: 10%;
-      background: #b8b8b8;
-      transform: rotate(-18deg);
-      border-radius: 999px;
-      opacity: 0.65;
+      transform: rotate(18deg);
     }
 
     .zone {
       position: absolute;
-      width: 78px;
-      height: 48px;
+      width: 58px;
+      height: 38px;
       border: 2px solid #24451f;
       border-radius: 10px;
-      background: rgba(255,255,255,0.88);
-      color: #172417;
+      background: white;
       font-weight: bold;
-      font-size: 14px;
-      cursor: grab;
-      transform: rotate(18deg);
       display: flex;
       align-items: center;
       justify-content: center;
-      user-select: none;
-      touch-action: none;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    }
-
-    .zone:active {
-      cursor: grabbing;
+      transform: rotate(18deg);
+      cursor: pointer;
     }
 
     .zone.active {
-      background: #fff4b8;
+      background: #fff0a6;
       border-color: #a67c00;
     }
 
-    .small-zone {
-      width: 66px;
-      height: 42px;
-      font-size: 13px;
+    #BPL { left: 29%; top: 25%; }
+    #BPR { left: 52%; top: 25%; }
+    #GL { left: 16%; top: 42%; }
+    #GR { left: 16%; top: 54%; }
+    #FL { left: 29%; top: 62%; }
+    #FR { left: 52%; top: 62%; }
+
+    .bed-buttons {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin-top: 12px;
     }
 
- #BPL { left: 85px; top: 100px; }
-#BPR { left: 300px; top: 100px; }
-
-#GL { left: 85px; top: 150px; }
-#GR { left: 80px; top: 245px; }
-
-#FL { left: 80px; top: 300px; }
-#FR { left: 315px; top: 365px; }
-
-    .panel {
-      background: white;
-      border: 1px solid #d5decf;
-      border-radius: 16px;
-      padding: 16px;
-      margin: 16px auto;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
-      text-align: left;
-      max-width: 620px;
+    button {
+      border: none;
+      border-radius: 10px;
+      padding: 10px;
+      background: #4f7f45;
+      color: white;
+      font-weight: bold;
     }
 
-    .panel h2 {
-      margin-top: 0;
-      text-align: center;
+    .plant-card {
+      border: 1px solid #d6dfcf;
+      border-radius: 14px;
+      padding: 12px;
+      margin-bottom: 12px;
     }
 
-    ul {
-      margin: 0;
-      padding-left: 24px;
-      line-height: 1.7;
+    .plant-card img {
+      width: 100%;
+      max-width: 230px;
+      border-radius: 10px;
+      margin: 8px 0;
+      display: block;
     }
 
-    .hint {
-      color: #5e6a5a;
-      font-size: 14px;
-      margin-top: 8px;
+    .pill {
+      display: inline-block;
+      background: #eef5ea;
+      border-radius: 999px;
+      padding: 4px 8px;
+      margin: 3px;
+      font-size: .85rem;
     }
 
-    @media (max-width: 600px) {
-      .zone {
-        width: 62px;
-        height: 38px;
-        font-size: 12px;
-      }
-
-      .small-zone {
-        width: 54px;
-        height: 34px;
-        font-size: 11px;
-      }
+    .note {
+      color: #5f6b5a;
     }
   </style>
 </head>
 
 <body>
   <header>
-    <h1>Garden Map</h1>
-    <p>Tap a bed to view plants. Drag beds to reposition them.</p>
+    <h1>Native Garden Planner</h1>
+    <p>Tap a bed to view plants, bloom times, notes, and images.</p>
   </header>
 
   <main>
-    <div class="controls">
-      <button class="secondary" id="resetButton">Reset Bed Positions</button>
-    </div>
+    <section class="card">
+      <div class="map">
+        <div class="house"></div>
 
-    <div class="map" id="map">
-      <div class="driveway"></div>
-      <div class="road"></div>
-      <div class="house"></div>
+        <div class="zone" id="BPL" data-bed="Back Porch Left">BPL</div>
+        <div class="zone" id="BPR" data-bed="Back Porch Right">BPR</div>
+        <div class="zone" id="GL" data-bed="Garage Left">GL</div>
+        <div class="zone" id="GR" data-bed="Garage Right">GR</div>
+        <div class="zone" id="FL" data-bed="Front Left">FL</div>
+        <div class="zone" id="FR" data-bed="Front Right">FR</div>
+      </div>
 
-      <div class="zone" id="FL" data-bed="Front Left">FL</div>
-      <div class="zone" id="FR" data-bed="Front Right">FR</div>
-      <div class="zone" id="GL" data-bed="Garage Left">GL</div>
-      <div class="zone small-zone" id="GR" data-bed="Garage Right">GR</div>
-      <div class="zone" id="BPL" data-bed="Back Porch Left">BPL</div>
-      <div class="zone" id="BPR" data-bed="Back Porch Right">BPR</div>
-    </div>
+      <div class="bed-buttons">
+        <button data-bed-button="Front Left">Front Left</button>
+        <button data-bed-button="Front Right">Front Right</button>
+        <button data-bed-button="Garage Left">Garage Left</button>
+        <button data-bed-button="Garage Right">Garage Right</button>
+        <button data-bed-button="Back Porch Left">Rear Left</button>
+        <button data-bed-button="Back Porch Right">Rear Right</button>
+      </div>
+    </section>
 
-    <p class="hint">If dragging feels awkward, tap first to view the bed, then drag slowly. Positions save automatically on this device.</p>
-
-    <section class="panel">
-      <h2 id="bedTitle">Front Right</h2>
-      <ul id="plantList"></ul>
+    <section class="card">
+      <h2 id="bedTitle"></h2>
+      <p id="bedSummary"></p>
+      <div id="plantList"></div>
     </section>
   </main>
 
