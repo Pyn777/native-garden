@@ -1,59 +1,59 @@
 const gardenData = {
   "Front Right": [
-    { name: "Wild bergamot", bloom: "Jun–Aug" },
-    { name: "Largeflower aster (2)", bloom: "Sep–Oct" },
-    { name: "Rattlesnake master", bloom: "Jun–Aug" },
-    { name: "Western sunflower (2)", bloom: "Jul–Sep" },
-    { name: "Kobold blazing star (5)", bloom: "Jul–Aug" },
-    { name: "Snow Flurry aster (3)", bloom: "Sep–Oct" },
-    { name: "Fireworks sundrops (3)", bloom: "May–Sep" },
-    { name: "Garden phlox", bloom: "Jun–Aug" },
-    { name: "Lanceleaf coreopsis", bloom: "May–Jul" },
-    { name: "Threadleaf coreopsis", bloom: "Jun–Aug" },
-    { name: "Blue Moon phlox", bloom: "Mar–May" }
+    { name: "Wild bergamot", scientific: "Monarda fistulosa", bloom: "Jun–Aug", planted: "Spring 2026", notes: "Pollinator plant; can spread by rhizomes and seed." },
+    { name: "Largeflower aster (2)", scientific: "Symphyotrichum grandiflorum", bloom: "Sep–Oct", planted: "Spring 2026", notes: "Late-season fall bloom." },
+    { name: "Rattlesnake master", scientific: "Eryngium yuccifolium", bloom: "Jun–Aug", planted: "Spring 2026", notes: "Architectural plant; slow early growth." },
+    { name: "Western sunflower (2)", scientific: "Helianthus occidentalis", bloom: "Jul–Sep", planted: "Spring 2026", notes: "Tall yellow summer bloom." },
+    { name: "Kobold blazing star (5)", scientific: "Liatris spicata ‘Kobold’", bloom: "Jul–Aug", planted: "Spring 2026", notes: "Purple vertical spikes; good pollinator plant." },
+    { name: "Snow Flurry aster (3)", scientific: "Symphyotrichum ericoides ‘Snow Flurry’", bloom: "Sep–Oct", planted: "Spring 2026", notes: "Low spreading fall aster." },
+    { name: "Fireworks sundrops (3)", scientific: "Oenothera lindheimeri", bloom: "May–Sep", planted: "Spring 2026", notes: "Airy texture; may move in wind." },
+    { name: "Garden phlox", scientific: "Phlox paniculata", bloom: "Jun–Aug", planted: "Spring 2026", notes: "Watch for powdery mildew later in season." },
+    { name: "Lanceleaf coreopsis", scientific: "Coreopsis lanceolata", bloom: "May–Jul", planted: "Spring 2026", notes: "Can reseed lightly." },
+    { name: "Threadleaf coreopsis", scientific: "Coreopsis verticillata", bloom: "Jun–Aug", planted: "Spring 2026", notes: "Fine foliage; long bloom window." },
+    { name: "Blue Moon phlox", scientific: "Phlox divaricata", bloom: "Mar–May", planted: "Spring 2026", notes: "Back corner; may fade in summer heat." }
   ],
 
   "Front Left": [
-    { name: "Southern bush honeysuckle (2)", bloom: "Jun–Jul" },
-    { name: "Prairie golden aster", bloom: "Aug–Oct" },
-    { name: "Wild columbine", bloom: "Apr–May" },
-    { name: "Fameflower", bloom: "Jun–Sep" },
-    { name: "Celandine poppy", bloom: "Mar–May" },
-    { name: "Native white petunia", bloom: "Jun–Sep" },
-    { name: "Coral honeysuckle (2)", bloom: "Apr–Jun" },
-    { name: "Tennessee coneflower", bloom: "Jun–Aug" },
-    { name: "Black-eyed Susan (2)", bloom: "Jun–Sep" },
-    { name: "Anise hyssop", bloom: "Jun–Sep" }
+    { name: "Southern bush honeysuckle (2)", scientific: "Diervilla sessilifolia", bloom: "Jun–Jul", planted: "Spring 2026", notes: "Native shrub; moved here together." },
+    { name: "Prairie golden aster", scientific: "Chrysopsis spp.", bloom: "Aug–Oct", planted: "Spring 2026", notes: "Late yellow bloom; good dry sunny plant." },
+    { name: "Wild columbine", scientific: "Aquilegia canadensis", bloom: "Apr–May", planted: "Spring 2026", notes: "Early bloomer; may reseed." },
+    { name: "Fameflower", scientific: "Phemeranthus calycinus", bloom: "Jun–Sep", planted: "Spring 2026", notes: "Low dry-site plant." },
+    { name: "Celandine poppy", scientific: "Stylophorum diphyllum", bloom: "Mar–May", planted: "Spring 2026", notes: "May go dormant or look rough in summer." },
+    { name: "Native white petunia", scientific: "Ruellia humilis", bloom: "Jun–Sep", planted: "Spring 2026", notes: "Low summer bloomer." },
+    { name: "Coral honeysuckle (2)", scientific: "Lonicera sempervirens", bloom: "Apr–Jun", planted: "Spring 2026", notes: "Pushed back on trellis." },
+    { name: "Tennessee coneflower", scientific: "Echinacea tennesseensis", bloom: "Jun–Aug", planted: "Spring 2026", notes: "Native coneflower; front area." },
+    { name: "Black-eyed Susan (2)", scientific: "Rudbeckia hirta", bloom: "Jun–Sep", planted: "Existing / moved Spring 2026", notes: "Short-lived perennial; may reseed." },
+    { name: "Anise hyssop", scientific: "Agastache foeniculum", bloom: "Jun–Sep", planted: "Spring 2026", notes: "Pollinator favorite; may self-seed." }
   ],
 
   "Garage Left": [
-    { name: "Aromatic aster", bloom: "Sep–Oct" },
-    { name: "Summer phlox", bloom: "Jun–Aug" },
-    { name: "Rough blazing star (2)", bloom: "Jul–Sep" },
-    { name: "Beardtongue (3)", bloom: "May–Jun" },
-    { name: "Gray goldenrod", bloom: "Aug–Oct" },
-    { name: "Butterfly weed (8 tubers)", bloom: "Jun–Aug" }
+    { name: "Aromatic aster", scientific: "Symphyotrichum oblongifolium", bloom: "Sep–Oct", planted: "Spring 2026", notes: "Late fall color." },
+    { name: "Summer phlox", scientific: "Phlox paniculata", bloom: "Jun–Aug", planted: "Spring 2026", notes: "Mid-summer color." },
+    { name: "Rough blazing star (2)", scientific: "Liatris aspera", bloom: "Jul–Sep", planted: "Spring 2026", notes: "Tall purple spikes." },
+    { name: "Beardtongue (3)", scientific: "Penstemon digitalis ‘Husker Red’", bloom: "May–Jun", planted: "Spring 2026", notes: "Early bloom; upright structure." },
+    { name: "Gray goldenrod", scientific: "Solidago nemoralis", bloom: "Aug–Oct", planted: "Moved Spring 2026", notes: "Recently moved; may look rough while recovering." },
+    { name: "Butterfly weed (8 tubers)", scientific: "Asclepias tuberosa", bloom: "Jun–Aug", planted: "Spring 2026", notes: "Tubers may emerge late; do not move once established." }
   ],
 
   "Garage Right": [
-    { name: "Black-eyed Susan (2)", bloom: "Jun–Sep" },
-    { name: "Butterfly weed (2 tubers)", bloom: "Jun–Aug" }
+    { name: "Black-eyed Susan (2)", scientific: "Rudbeckia hirta", bloom: "Jun–Sep", planted: "Spring 2026", notes: "Small 2x2 accent bed." },
+    { name: "Butterfly weed (2 tubers)", scientific: "Asclepias tuberosa", bloom: "Jun–Aug", planted: "Spring 2026", notes: "Small tubers; may be slow to emerge." }
   ],
 
   "Back Porch Right": [
-    { name: "Peonies (2)", bloom: "Apr–May" },
-    { name: "Jacob Cline bee balm (3)", bloom: "Jun–Aug" },
-    { name: "Wild bergamot", bloom: "Jun–Aug" },
-    { name: "Spotted bee balm", bloom: "Jul–Sep" },
-    { name: "Mountain mint", bloom: "Jul–Sep" },
-    { name: "Obedient plant", bloom: "Jul–Sep" },
-    { name: "Coral honeysuckle", bloom: "Apr–Jun" },
-    { name: "Purple passionflower (Passiflora incarnata)", bloom: "Jun–Aug" }
+    { name: "Peonies (2)", scientific: "Paeonia spp.", bloom: "Apr–May", planted: "Established", notes: "Huge established anchors." },
+    { name: "Jacob Cline bee balm (3)", scientific: "Monarda didyma ‘Jacob Cline’", bloom: "Jun–Aug", planted: "Spring 2026 / established", notes: "Spreads by rhizomes; watch around peonies." },
+    { name: "Wild bergamot", scientific: "Monarda fistulosa", bloom: "Jun–Aug", planted: "Spring 2026", notes: "Can spread; pollinator plant." },
+    { name: "Spotted bee balm", scientific: "Monarda punctata", bloom: "Jul–Sep", planted: "Spring 2026", notes: "Added later; drought-tolerant Monarda." },
+    { name: "Mountain mint", scientific: "Pycnanthemum virginianum", bloom: "Jul–Sep", planted: "Spring 2026", notes: "Excellent pollinator plant; spreads gradually." },
+    { name: "Obedient plant", scientific: "Physostegia virginiana", bloom: "Jul–Sep", planted: "Spring 2026", notes: "Very aggressive spreader; monitor yearly." },
+    { name: "Coral honeysuckle", scientific: "Lonicera sempervirens", bloom: "Apr–Jun", planted: "Established", notes: "Vine; keep trained." },
+    { name: "Purple passionflower", scientific: "Passiflora incarnata", bloom: "Jun–Aug", planted: "Planned for BPR", notes: "Can spread by root suckers; place intentionally." }
   ],
 
   "Back Porch Left": [
-    { name: "Jacob Cline bee balm (2)", bloom: "Jun–Aug" },
-    { name: "Blue lobelia", bloom: "Jul–Sep" }
+    { name: "Jacob Cline bee balm (2)", scientific: "Monarda didyma ‘Jacob Cline’", bloom: "Jun–Aug", planted: "Spring 2026", notes: "Will spread; watch blue lobelia space." },
+    { name: "Blue lobelia", scientific: "Lobelia siphilitica", bloom: "Jul–Sep", planted: "Spring 2026", notes: "Likes more moisture." }
   ]
 };
 
@@ -81,7 +81,13 @@ function showBed(bed) {
 
   gardenData[bed].forEach(p => {
     const li = document.createElement("li");
-    li.textContent = `${p.name} (${p.bloom})`;
+    li.innerHTML = `
+      <strong>${p.name}</strong><br>
+      <em>${p.scientific}</em><br>
+      Bloom: ${p.bloom}<br>
+      Planted: ${p.planted}<br>
+      Notes: ${p.notes}
+    `;
     plantList.appendChild(li);
   });
 }
