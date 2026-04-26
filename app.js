@@ -13,6 +13,7 @@ const gardenData = {
       ["Garden phlox", "Phlox paniculata", "Jun–Aug", "Spring 2026", "Watch for powdery mildew."],
       ["Lanceleaf coreopsis", "Coreopsis lanceolata", "May–Jul", "Spring 2026", "Can reseed lightly."],
       ["Threadleaf coreopsis", "Coreopsis verticillata", "Jun–Aug", "Spring 2026", "Fine foliage."],
+      ["Wild columbine", "Aquilegia canadensis", "Apr–May", "Spring 2026", "Early bloomer; may reseed."],
       ["Blue Moon phlox", "Phlox divaricata", "Mar–May", "Spring 2026", "Back corner; may fade in summer."]
     ]
   },
@@ -23,7 +24,6 @@ const gardenData = {
     plants: [
       ["Southern bush honeysuckle (2)", "Diervilla sessilifolia", "Jun–Jul", "Spring 2026", "Native shrub."],
       ["Prairie golden aster", "Chrysopsis", "Aug–Oct", "Spring 2026", "Late yellow bloom."],
-      ["Wild columbine", "Aquilegia canadensis", "Apr–May", "Spring 2026", "Early bloomer; may reseed."],
       ["Fameflower", "Phemeranthus calycinus", "Jun–Sep", "Spring 2026", "Low dry-site plant."],
       ["Celandine poppy", "Stylophorum diphyllum", "Mar–May", "Spring 2026", "May go dormant in summer."],
       ["Native white petunia", "Ruellia humilis", "Jun–Sep", "Spring 2026", "Low summer bloomer."],
@@ -67,7 +67,7 @@ const gardenData = {
       ["Virginia mountain mint", "Pycnanthemum virginianum", "Jul–Sep", "Spring 2026", "Excellent pollinator plant."],
       ["Obedient plant", "Physostegia virginiana", "Jul–Sep", "Spring 2026", "Very aggressive spreader."],
       ["Coral honeysuckle", "Lonicera sempervirens", "Apr–Jun", "Established", "Vine; keep trained."],
-      ["Purple passionflower", "Passiflora incarnata", "Jun–Aug", "Planned for BPR", "Can spread by root suckers."]
+     
     ]
   },
 
@@ -76,7 +76,8 @@ const gardenData = {
     summary: "Smaller rear bed.",
     plants: [
       ["Jacob Cline bee balm (2)", "Monarda didyma", "Jun–Aug", "Spring 2026", "Will spread."],
-      ["Blue lobelia", "Lobelia siphilitica", "Jul–Sep", "Spring 2026", "Likes more moisture."]
+      ["Blue lobelia", "Lobelia siphilitica", "Jul–Sep", "Spring 2026", "Likes more moisture."],
+      ["Purple passionflower", "Passiflora incarnata", "Jun–Aug", "Planned for BPR", "Can spread by root suckers."]
     ]
   }
 };
