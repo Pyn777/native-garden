@@ -42,7 +42,7 @@ const gardenData = {
       ["Summer phlox", "Phlox paniculata", "Jun–Aug", "Spring 2026", "Mid-summer color."],
       ["Rough blazing star (2)", "Liatris aspera", "Jul–Sep", "Spring 2026", "Tall purple spikes."],
       ["Husker Red beardtongue (3)", "Penstemon digitalis", "May–Jun", "Spring 2026", "Early bloom."],
-      ["Gray goldenrod", "Solidago nemoralis", "Aug–Oct", "Moved Spring 2026", "May look rough while recovering."],
+      ["Gray goldenrod", "Solidago nemoralis", "Aug–Oct", "Moved Spring 2026"],
       ["Butterfly weed (8 tubers)", "Asclepias tuberosa", "Jun–Aug", "Spring 2026", "Tubers may emerge late."]
     ]
   },
@@ -66,9 +66,8 @@ const gardenData = {
       ["Spotted bee balm", "Monarda punctata", "Jul–Sep", "Spring 2026", "Drought-tolerant Monarda."],
       ["Virginia mountain mint", "Pycnanthemum virginianum", "Jul–Sep", "Spring 2026", "Excellent pollinator plant."],
       ["Obedient plant", "Physostegia virginiana", "Jul–Sep", "Spring 2026", "Very aggressive spreader."],
-      ["Coral honeysuckle", "Lonicera sempervirens", "Apr–Jun", "Established", "Vine; keep trained."],
-     
-    ]
+      ["Coral honeysuckle", "Lonicera sempervirens", "Apr–Jun", "Established", "Vine; keep trained."]
+     ]
   },
 
   "Back Porch Left": {
@@ -77,7 +76,7 @@ const gardenData = {
     plants: [
       ["Jacob Cline bee balm (2)", "Monarda didyma", "Jun–Aug", "Spring 2026", "Will spread."],
       ["Blue lobelia", "Lobelia siphilitica", "Jul–Sep", "Spring 2026", "Likes more moisture."],
-      ["Purple passionflower", "Passiflora incarnata", "Jun–Aug", "Planned for BPR", "Can spread by root suckers."]
+      ["Purple passionflower", "Passiflora incarnata", "Jun–Aug", "Can spread by root suckers."]
     ]
   }
 };
