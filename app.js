@@ -23,7 +23,8 @@ const gardenData = {
     summary: "Sunny meadow-like front bed.",
     plants: [
       ["Southern bush honeysuckle (2)", "Diervilla sessilifolia", "Jun–Jul", "Spring 2026", "Native shrub."],
-      ["Prairie golden aster", "Chrysopsis", "Aug–Oct", "Spring 2026", "Late yellow bloom."],
+      ["Blue Sage (2)", "Salvia azurea", "Aug–Oct", "Spring 2026", "Tall native; late-season pollinator plant."],
+      ["Whorled milkweed", "Asclepias verticillata", "Jun-Sep", "Spring 2026", "Monarch host; fine foliage; spreads by rhizomes."],
       ["Fameflower", "Phemeranthus calycinus", "Jun–Sep", "Spring 2026", "Low dry-site plant."],
       ["Celandine poppy", "Stylophorum diphyllum", "Mar–May", "Spring 2026", "May go dormant in summer."],
       ["Native white petunia", "Ruellia humilis", "Jun–Sep", "Spring 2026", "Low summer bloomer."],
