@@ -3,7 +3,7 @@ const gardenData = {
     display: "Front Yard — Right Bed",
     summary: "Meadow-style front bed, mapped left to right.",
     plants: [
-      ["Wild bergamot", "Monarda fistulosa", "Jun–Aug", "Spring 2026", "Pollinator plant; can spread."],
+      ["Southern bush honeysuckle", "Diervilla sessilifolia", "Jun–Jul", "Spring 2026", "Native shrub."],
       ["Largeflower aster (2)", "Symphyotrichum grandiflorum", "Sep–Oct", "Spring 2026", "Late-season fall bloom."],
       ["Rattlesnake master", "Eryngium yuccifolium", "Jun–Aug", "Spring 2026", "Architectural plant; slow early growth."],
       ["Western sunflower (2)", "Helianthus occidentalis", "Jul–Sep", "Spring 2026", "Tall yellow summer bloom."],
@@ -15,6 +15,7 @@ const gardenData = {
       ["Threadleaf coreopsis", "Coreopsis verticillata", "Jun–Aug", "Spring 2026", "Fine foliage."],
       ["Wild columbine", "Aquilegia canadensis", "Apr–May", "Spring 2026", "Early bloomer; may reseed."],
       ["Blue Moon phlox", "Phlox divaricata", "Mar–May", "Spring 2026", "Back corner; may fade in summer."]
+      ["Celandine poppy", "Stylophorum diphyllum", "Mar–May", "Spring 2026", "May go dormant in summer."],
     ]
   },
 
@@ -22,11 +23,11 @@ const gardenData = {
     display: "Front Yard — Left Bed",
     summary: "Sunny meadow-like front bed.",
     plants: [
-      ["Southern bush honeysuckle (2)", "Diervilla sessilifolia", "Jun–Jul", "Spring 2026", "Native shrub."],
+      ["Southern bush honeysuckle", "Diervilla sessilifolia", "Jun–Jul", "Spring 2026", "Native shrub."],
       ["Blue Sage (2)", "Salvia azurea", "Aug–Oct", "Spring 2026", "Tall native; late-season pollinator plant."],
       ["Whorled milkweed", "Asclepias verticillata", "Jun-Sep", "Spring 2026", "Monarch host; fine foliage; spreads by rhizomes."],
       ["Fameflower", "Phemeranthus calycinus", "Jun–Sep", "Spring 2026", "Low dry-site plant."],
-      ["Celandine poppy", "Stylophorum diphyllum", "Mar–May", "Spring 2026", "May go dormant in summer."],
+      ["Wild bergamot", "Monarda fistulosa", "Jun–Aug", "Spring 2026", "Pollinator plant; can spread."],
       ["Native white petunia", "Ruellia humilis", "Jun–Sep", "Spring 2026", "Low summer bloomer."],
       ["Coral honeysuckle (2)", "Lonicera sempervirens", "Apr–Jun", "Spring 2026", "On trellis."],
       ["Tennessee coneflower", "Echinacea tennesseensis", "Jun–Aug", "Spring 2026", "Native coneflower."],
@@ -61,13 +62,12 @@ const gardenData = {
     display: "Rear Yard — Right Bed",
     summary: "Peony bed with several strong spreaders and Passiflora.",
     plants: [
-      ["Peonies (2)", "Paeonia", "Apr–May", "Established", "Huge established anchors."],
-      ["Jacob Cline bee balm (3)", "Monarda didyma", "Jun–Aug", "Spring 2026 / established", "Spreads by rhizomes."],
-      ["Wild bergamot", "Monarda fistulosa", "Jun–Aug", "Spring 2026", "Can spread."],
-      ["Spotted bee balm", "Monarda punctata", "Jul–Sep", "Spring 2026", "Drought-tolerant Monarda."],
-      ["Virginia mountain mint", "Pycnanthemum virginianum", "Jul–Sep", "Spring 2026", "Excellent pollinator plant."],
-      ["Obedient plant", "Physostegia virginiana", "Jul–Sep", "Spring 2026", "Very aggressive spreader."],
       ["Coral honeysuckle", "Lonicera sempervirens", "Apr–Jun", "Established", "Vine; keep trained."]
+      ["Jacob Cline bee balm (3)", "Monarda didyma", "Jun–Aug", "Spring 2026 / established", "Spreads by rhizomes."],
+      ["Spotted bee balm", "Monarda punctata", "Jul–Sep", "Spring 2026", "Drought-tolerant Monarda."],
+      ["Wild bergamot", "Monarda fistulosa", "Jun–Aug", "Spring 2026", "Can spread."],
+      ["Obedient plant", "Physostegia virginiana", "Jul–Sep", "Spring 2026", "Very aggressive spreader."],
+      ["Virginia mountain mint", "Pycnanthemum virginianum", "Jul–Sep", "Spring 2026", "Excellent pollinator plant."]
      ]
   },
 
@@ -75,7 +75,7 @@ const gardenData = {
     display: "Rear Yard — Left Bed",
     summary: "Smaller rear bed.",
     plants: [
-      ["Jacob Cline bee balm (2)", "Monarda didyma", "Jun–Aug", "Spring 2026", "Will spread."],
+      ["Jacob Cline bee balm (3)", "Monarda didyma", "Jun–Aug", "Spring 2026", "Will spread."],
       ["Blue lobelia", "Lobelia siphilitica", "Jul–Sep", "Spring 2026", "Likes more moisture."],
       ["Purple passionflower", "Passiflora incarnata", "Jun–Aug", "Can spread by root suckers."]
     ]
