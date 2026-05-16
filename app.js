@@ -62,7 +62,7 @@ const gardenData = {
     display: "Rear Yard — Right Bed",
     summary: "Peony bed with several strong spreaders and Passiflora.",
     plants: [
-      ["Coral honeysuckle", "Lonicera sempervirens", "Apr–Jun", "Established", "Vine; keep trained."]
+      ["Coral honeysuckle", "Lonicera sempervirens", "Apr–Jun", "Established", "Vine; keep trained."],
       ["Jacob Cline bee balm (3)", "Monarda didyma", "Jun–Aug", "Spring 2026 / established", "Spreads by rhizomes."],
       ["Spotted bee balm", "Monarda punctata", "Jul–Sep", "Spring 2026", "Drought-tolerant Monarda."],
       ["Wild bergamot", "Monarda fistulosa", "Jun–Aug", "Spring 2026", "Can spread."],
