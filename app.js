@@ -3,19 +3,18 @@ const gardenData = {
     display: "Front Yard — Right Bed",
     summary: "Meadow-style front bed, mapped left to right.",
     plants: [
-      ["Southern bush honeysuckle", "Diervilla sessilifolia", "Jun–Jul", "Spring 2026", "Native shrub."],
-      ["Largeflower aster (2)", "Symphyotrichum grandiflorum", "Sep–Oct", "Spring 2026", "Late-season fall bloom."],
-      ["Rattlesnake master", "Eryngium yuccifolium", "Jun–Aug", "Spring 2026", "Architectural plant; slow early growth."],
-      ["Western sunflower (2)", "Helianthus occidentalis", "Jul–Sep", "Spring 2026", "Tall yellow summer bloom."],
-      ["Kobold blazing star (5)", "Liatris spicata", "Jul–Aug", "Spring 2026", "Purple vertical spikes."],
-      ["Snow Flurry aster (3)", "Symphyotrichum ericoides", "Sep–Oct", "Spring 2026", "Low spreading fall aster."],
-      ["Fireworks sundrops (3)", "Oenothera lindheimeri", "May–Sep", "Spring 2026", "Airy texture."],
-      ["Garden phlox", "Phlox paniculata", "Jun–Aug", "Spring 2026", "Watch for powdery mildew."],
-      ["Lanceleaf coreopsis", "Coreopsis lanceolata", "May–Jul", "Spring 2026", "Can reseed lightly."],
-      ["Threadleaf coreopsis", "Coreopsis verticillata", "Jun–Aug", "Spring 2026", "Fine foliage."],
-      ["Wild columbine", "Aquilegia canadensis", "Apr–May", "Spring 2026", "Early bloomer; may reseed."],
-      ["Blue Moon phlox", "Phlox divaricata", "Mar–May", "Spring 2026", "Back corner; may fade in summer."],
-      ["Celandine poppy", "Stylophorum diphyllum", "Mar–May", "Spring 2026", "May go dormant in summer."]
+["Southern bush honeysuckle", "Diervilla sessilifolia", "Jun–Jul", "Spring 2026", "Native shrub. Medium water; drought tolerant once established. Sun: full sun to part shade."],
+["Largeflower aster (2)", "Symphyotrichum grandiflorum", "Sep–Oct", "Spring 2026", "Late-season fall bloom. Low to medium water. Sun: full sun."],
+["Rattlesnake master", "Eryngium yuccifolium", "Jun–Aug", "Spring 2026", "Architectural plant; slow early growth. Low water; avoid soggy soil. Sun: full sun."],
+["Western sunflower (2)", "Helianthus occidentalis", "Jul–Sep", "Spring 2026", "Tall yellow summer bloom. Low to medium water. Sun: full sun."],
+["Kobold blazing star (5)", "Liatris spicata", "Jul–Aug", "Spring 2026", "Purple vertical spikes. Low water after establishment. Sun: full sun."],
+["Snow Flurry aster (3)", "Symphyotrichum ericoides", "Sep–Oct", "Spring 2026", "Low spreading fall aster. Low water once established. Sun: full sun."],
+["Fireworks sundrops (3)", "Oenothera lindheimeri", "May–Sep", "Spring 2026", "Airy texture. Low to medium water; drought tolerant. Sun: full sun."],
+["Garden phlox", "Phlox paniculata", "Jun–Aug", "Spring 2026", "Watch for powdery mildew. Medium water; prefers even moisture. Sun: full sun to part sun."],
+["Threadleaf coreopsis", "Coreopsis verticillata", "Jun–Aug", "Spring 2026", "Fine foliage. Low water; drought tolerant. Sun: full sun."],
+["Wild columbine", "Aquilegia canadensis", "Apr–May", "Spring 2026", "Early bloomer; may reseed. Medium water; likes moist spring soil. Sun: part shade."],
+["Blue Moon phlox", "Phlox divaricata", "Mar–May", "Spring 2026", "Back corner; may fade in summer. Medium water; prefers moist soil. Sun: part shade to shade."],
+["Celandine poppy", "Stylophorum diphyllum", "Mar–May", "Spring 2026", "May go dormant in summer. Medium to high water; prefers consistent moisture. Sun: shade to part shade."]
     ]
   },
 
@@ -23,16 +22,16 @@ const gardenData = {
     display: "Front Yard — Left Bed",
     summary: "Sunny meadow-like front bed.",
     plants: [
-      ["Southern bush honeysuckle", "Diervilla sessilifolia", "Jun–Jul", "Spring 2026", "Native shrub."],
-      ["Blue Sage (2)", "Salvia azurea", "Aug–Oct", "Spring 2026", "Tall native; late-season pollinator plant."],
-      ["Whorled milkweed", "Asclepias verticillata", "Jun-Sep", "Spring 2026", "Monarch host; fine foliage; spreads by rhizomes."],
-      ["Fameflower", "Phemeranthus calycinus", "Jun–Sep", "Spring 2026", "Low dry-site plant."],
-      ["Wild bergamot", "Monarda fistulosa", "Jun–Aug", "Spring 2026", "Pollinator plant; can spread."],
-      ["Native white petunia", "Ruellia humilis", "Jun–Sep", "Spring 2026", "Low summer bloomer."],
-      ["Coral honeysuckle (2)", "Lonicera sempervirens", "Apr–Jun", "Spring 2026", "On trellis."],
-      ["Tennessee coneflower", "Echinacea tennesseensis", "Jun–Aug", "Spring 2026", "Native coneflower."],
-      ["Black-eyed Susan (2)", "Rudbeckia hirta", "Jun–Sep", "Existing / moved Spring 2026", "May reseed."],
-      ["Anise hyssop", "Agastache foeniculum", "Jun–Sep", "Spring 2026", "Pollinator favorite."]
+  ["Southern bush honeysuckle", "Diervilla sessilifolia", "Jun–Jul", "Spring 2026", "Native shrub. Medium water; drought tolerant once established."],
+  ["Lanceleaf coreopsis", "Coreopsis lanceolata", "May–Jul", "Spring 2026", "Can reseed lightly. Low water; drought tolerant."],
+  ["Blue Sage (2)", "Salvia azurea", "Aug–Oct", "Spring 2026", "Tall native; late-season pollinator plant. Low water; prefers dry conditions."],
+  ["Whorled milkweed", "Asclepias verticillata", "Jun-Sep", "Spring 2026", "Monarch host; fine foliage; spreads by rhizomes. Low water; avoid overwatering."],
+  ["Fameflower", "Phemeranthus calycinus", "Jun–Sep", "Spring 2026", "Low dry-site plant. Very low water; thrives in dry soil."],
+  ["Native white petunia", "Ruellia humilis", "Jun–Sep", "Spring 2026", "Low summer bloomer. Low to medium water."],
+  ["Coral honeysuckle (2)", "Lonicera sempervirens", "Apr–Jun", "Spring 2026", "On trellis. Medium water during establishment; drought tolerant later."],
+  ["Tennessee coneflower", "Echinacea tennesseensis", "Jun–Aug", "Spring 2026", "Native coneflower. Low water once established."],
+  ["Black-eyed Susan (2)", "Rudbeckia hirta", "Jun–Sep", "Existing / moved Spring 2026", "May reseed. Low to medium water."],
+  ["Anise hyssop", "Agastache foeniculum", "Jun–Sep", "Spring 2026", "Pollinator favorite. Medium water; prefers well-drained soil."]
     ]
   },
 
