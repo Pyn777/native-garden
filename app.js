@@ -39,7 +39,7 @@ const gardenData = {
     display: "Garage Side — Left Bed",
     summary: "Garage-side bed with 8 butterfly weed tubers.",
     plants: [
-  ["Aromatic Aster", "Symphyotrichum oblongifolium", "Sep–Oct", "NA", "Summer 2025", "Late fall color. Low water once established. Sun: full sun (6+ hrs)."],
+  ["Aromatic Aster", "Symphyotrichum oblongifolium", "Sep–Oct", "Summer 2025", "NA", "Late fall color. Low water once established. Sun: full sun (6+ hrs)."],
   ["Summer Phlox", "Phlox paniculata", "Jun–Aug", "Summer 2025", "May 2026", "Mid-summer color. Medium water; prefers even moisture. Sun: full sun to part sun (4–8+ hrs)."],
   ["Rough Blazing Star (2)", "Liatris aspera", "Jul–Sep", "3/20/26", "NA", "Tall purple spikes. Low water after establishment. Sun: full sun (6+ hrs)."],
   ["Husker Red Beardtongue (3)", "Penstemon digitalis", "May–Jun", "3/20/26", "April/May 2026", "Early bloom. Low to medium water; prefers well-drained soil. Sun: full sun to part shade (4–8+ hrs)."],
