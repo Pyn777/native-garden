@@ -75,10 +75,10 @@ const gardenData = {
     display: "Rear Yard — Left Bed",
     summary: "Smaller rear bed.",
     plants: [
-  ["Wild Bergamot", "Monarda fistulosa", "Jun–Aug", "3/20/26", "Can spread. Medium water; drought tolerant once established. Sun: full sun to part sun (4–8+ hrs)."],
+  ["Wild Bergamot", "Monarda fistulosa", "Jun–Aug", "3/20/26", "", "Can spread. Medium water; drought tolerant once established. Sun: full sun to part sun (4–8+ hrs)."],
   ["Jacob Cline Bee Balm (2)", "Monarda didyma", "Jun–Aug", "3/20/26", "May 2026", "Will spread. Medium to high water; prefers consistent moisture. Sun: full sun to part sun (4–8+ hrs)."],
-  ["Blue Lobelia", "Lobelia siphilitica", "Jul–Sep", "3/20/26", "Likes more moisture. Medium to high water; prefers consistently moist soil. Sun: part sun to part shade (2–6 hrs)."],
-  ["Purple Passionflower", "Passiflora incarnata", "Jun–Aug", "4/24/26", "Can spread by root suckers. Medium water; drought tolerant once established. Sun: full sun to part shade (4–8+ hrs)."]
+  ["Blue Lobelia", "Lobelia siphilitica", "Jul–Sep", "3/20/26", "", "Likes more moisture. Medium to high water; prefers consistently moist soil. Sun: part sun to part shade (2–6 hrs)."],
+  ["Purple Passionflower", "Passiflora incarnata", "Jun–Aug", "4/24/26",  "", "Can spread by root suckers. Medium water; drought tolerant once established. Sun: full sun to part shade (4–8+ hrs)."]
     ]
   }
 };
