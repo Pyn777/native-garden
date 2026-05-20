@@ -42,7 +42,7 @@ const gardenData = {
   ["Aromatic Aster", "Symphyotrichum oblongifolium", "Sep–Oct", "Spring 2026", "Late fall color. Low water once established. Sun: full sun (6+ hrs)."],
   ["Summer Phlox", "Phlox paniculata", "Jun–Aug", "Spring 2026", "Mid-summer color. Medium water; prefers even moisture. Sun: full sun to part sun (4–8+ hrs). Bloomed May 2026"],
   ["Rough Blazing Star (2)", "Liatris aspera", "Jul–Sep", "Spring 2026", "Tall purple spikes. Low water after establishment. Sun: full sun (6+ hrs)."],
-  ["Husker Red Beardtongue (3)", "Penstemon digitalis", "May–Jun", "Spring 2026", "Early bloom. Low to medium water; prefers well-drained soil. Sun: full sun to part shade (4–8+ hrs). Bloomed April/May 2026"],
+  ["Husker Red Beardtongue (3)", "Penstemon digitalis", "May–Jun", "3/20/26", "Early bloom. Low to medium water; prefers well-drained soil. Sun: full sun to part shade (4–8+ hrs). Bloomed April/May 2026"],
   ["Gray Goldenrod", "Solidago nemoralis", "Aug–Oct", "Moved Spring 2026", "Low water; drought tolerant native. Sun: full sun (6+ hrs)."],
   ["Prairie Golden Aster", "Heterotheca camporum", "Jul-Sep", "Moved Spring 2026", "Low water; drought tolerant native. Sun: full sun (6+ hrs)."],
   ["Butterfly Weed (8 tubers)", "Asclepias tuberosa", "Jun–Aug", "Spring 2026", "Tubers may emerge late. Low water once established; avoid wet soil. Sun: full sun (6+ hrs)."]
