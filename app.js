@@ -76,7 +76,7 @@ const gardenData = {
     summary: "Smaller rear bed.",
     plants: [
   ["Wild Bergamot", "Monarda fistulosa", "Jun–Aug", "3/20/26", "Can spread. Medium water; drought tolerant once established. Sun: full sun to part sun (4–8+ hrs)."],
-  ["Jacob Cline Bee Balm (2)", "Monarda didyma", "Jun–Aug", "3/20/26", "Will spread. Medium to high water; prefers consistent moisture. Sun: full sun to part sun (4–8+ hrs). Bloomed May 2026"],
+  ["Jacob Cline Bee Balm (2)", "Monarda didyma", "Jun–Aug", "3/20/26", "May 2026", "Will spread. Medium to high water; prefers consistent moisture. Sun: full sun to part sun (4–8+ hrs)."],
   ["Blue Lobelia", "Lobelia siphilitica", "Jul–Sep", "3/20/26", "Likes more moisture. Medium to high water; prefers consistently moist soil. Sun: part sun to part shade (2–6 hrs)."],
   ["Purple Passionflower", "Passiflora incarnata", "Jun–Aug", "4/24/26", "Can spread by root suckers. Medium water; drought tolerant once established. Sun: full sun to part shade (4–8+ hrs)."]
     ]
@@ -114,7 +114,7 @@ async function showBed(bed) {
   });
 
   for (const plant of bedData.plants) {
-    const [name, scientific, bloom, planted, notes] = plant;
+    const [name, scientific, bloom, planted, bloomed, notes] = plant;
 
     const card = document.createElement("article");
     card.className = "plant-card";
@@ -126,6 +126,7 @@ async function showBed(bed) {
       <div>
         <span class="pill">Bloom: ${bloom}</span>
         <span class="pill">Planted: ${planted}</span>
+        <span class="pill">Bloomed: ${bloomed}</span>
       </div>
       <p class="note">${notes}</p>
     `;
@@ -141,6 +142,7 @@ async function showBed(bed) {
       <div>
         <span class="pill">Bloom: ${bloom}</span>
         <span class="pill">Planted: ${planted}</span>
+        <span class="pill">Bloomed: ${bloomed}</span>
       </div>
       <p class="note">${notes}</p>
     `;
