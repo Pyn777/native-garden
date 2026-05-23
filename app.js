@@ -9,7 +9,7 @@ const gardenData = {
   ["Western Sunflower (2)", "Helianthus occidentalis", "Jul–Sep", "3/24/26", "NA", "Tall yellow summer bloom. Low to medium water. Sun: full sun (6+ hrs)."],
   ["Kobold Blazing Star (5)", "Liatris spicata", "Jul–Aug", "3/24/26", "NA", "Purple vertical spikes. Low water after establishment. Sun: full sun (6+ hrs)."],
   ["Snow Flurry Aster (3)", "Symphyotrichum ericoides", "Sep–Oct", "3/24/26", "NA", "Low spreading fall aster. Low water once established. Sun: full sun (6+ hrs)."],
-  ["Fireworks Sundrops (3)", "Oenothera lindheimeri", "May–Sep", "3/24/26", "May 2026", "Airy texture. Low to medium water; drought tolerant. Sun: full sun (6+ hrs)."],
+  ["Fireworks Sundrops (3)", "Oenothera fruticosa", "May–Sep", "3/24/26", "May 2026", "Airy texture. Low to medium water; drought tolerant. Sun: full sun (6+ hrs)."],
   ["Garden Phlox", "Phlox paniculata", "Jun–Aug", "3/24/26", "NA", "Watch for powdery mildew. Medium water; prefers even moisture. Sun: full sun to part sun (4–8+ hrs)."],
   ["Threadleaf Coreopsis", "Coreopsis verticillata", "Jun–Aug", "4/24/26", "NA", "Fine foliage. Low water; drought tolerant. Sun: full sun (6+ hrs)."],
   ["Wild Columbine", "Aquilegia canadensis", "Apr–May", "4/09/26", "NA", "Early bloomer; may reseed. Medium water; likes moist spring soil. Sun: part shade (2–6 hrs)."],
