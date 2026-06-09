@@ -13,8 +13,8 @@ const gardenData = {
   ["Garden Phlox", "Phlox paniculata", "Jun–Aug", "3/24/26", "NA", "Watch for powdery mildew. Medium water; prefers even moisture. Sun: full sun to part sun (4–8+ hrs)."],
   ["Threadleaf Coreopsis", "Coreopsis verticillata", "Jun–Aug", "4/24/26", "NA", "Fine foliage. Low water; drought tolerant. Sun: full sun (6+ hrs)."],
   ["Wild Columbine", "Aquilegia canadensis", "Apr–May", "4/09/26", "NA", "Early bloomer; may reseed. Medium water; likes moist spring soil. Sun: part shade (2–6 hrs)."],
-  ["Blue Moon Phlox", "Phlox divaricata", "Mar–May", "4/09/26", "NA", "Back corner; may fade in summer. Medium water; prefers moist soil. Sun: part shade to shade (0–6 hrs)."],
-  ["Celandine Poppy", "Stylophorum diphyllum", "Mar–May", "4/09/26", "NA", "May go dormant in summer. Medium to high water; prefers consistent moisture. Sun: shade to part shade (0–4 hrs preferred)."]
+  ["Blue Moon Phlox", "Phlox divaricata", "Mar–May", "4/09/26", "In bloom when bought", "Back corner; may fade in summer. Medium water; prefers moist soil. Sun: part shade to shade (0–6 hrs)."],
+  ["Celandine Poppy", "Stylophorum diphyllum", "Mar–May", "4/09/26", "Did not bloom", "May go dormant in summer. Medium to high water; prefers consistent moisture. Sun: shade to part shade (0–4 hrs preferred)."]
     ]
   },
 
